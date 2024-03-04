@@ -1,0 +1,40 @@
+.ulDrL{
+    list-style: none;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    border: 1px grey solid;
+    width: 100px;
+    border-radius: 10px;
+}
+
+.buttonFA{
+    display: flex;
+        font-size: 14px;
+        width: 100px;
+        height: 42px;
+        justify-content: center;
+        align-items: center;
+        border: transparent;
+        background-color: transparent;
+        gap: 15px;
+        padding: 0;
+        padding-left: 5px;
+}
+
+.buttonFA:hover{
+    background-color: rgb(149, 200, 251);
+}
+
+.firstChild{
+    border-radius: 9px 9px 0 0;
+}
+
+.lastChild{
+    border-radius: 0 0 9px 9px;
+}
+
+.divArrow {
+    height: 20px;
+    width: 20px;
+}

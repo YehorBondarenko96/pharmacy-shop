@@ -1,0 +1,25 @@
+.allPharmaciesListDiv{
+    height: 100%;
+    padding: 0;
+    border: 1px grey solid;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pharmaciesHlll{
+    padding: 0;
+}
+
+.pharmaciesUl{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    overflow: auto;
+}
+
+.pharmaciesLi{
+    font-size: 0;
+}

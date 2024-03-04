@@ -1,3 +1,10 @@
+import { Route, Routes, Navigate } from "react-router-dom";
+import { lazy } from "react";
+import { SharedLayout } from "./SharedLayout/SharedLayout";
+
+const Shop = lazy(() => import('./Shop/Shop'));
+
+
 export const App = () => {
   return (
     <div
@@ -10,7 +17,13 @@ export const App = () => {
         color: '#010101'
       }}
     >
-      React homework template
+      <Routes>
+        <Route path='/' element={<SharedLayout />}>
+          <Route index element={<Shop/>}/>
+
+        </Route>
+          <Route path="*" element={<Navigate to="/" />} /> 
+      </Routes>
     </div>
   );
 };
