@@ -46,7 +46,6 @@ export const SevDr = ({ drug }) => {
             const pNumeDrug = pNumeDrugRef.current;
             const drugsUl = document.querySelector('.allDivSD');
             if (drugsUl) {
-                const heightSize = drugsUl.clientHeight / 2;
                 const widthSize = drugsUl.clientWidth;
                 drugLi.style.height = `${widthSize/2}px`;
                 drugImg.style.width = widthSize / 2 + 'px';
