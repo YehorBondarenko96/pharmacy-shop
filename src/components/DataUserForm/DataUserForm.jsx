@@ -10,8 +10,9 @@ export const DataUserForm = ({ realScreenHeight }) => {
     useEffect(() => {
         if (allDivDUFRef.current) {
             const allDivDUF = allDivDUFRef.current;
-            allDivDUF.style.height = realScreenHeight - 230 + 'px';
-            allDivDUF.style.width = (realScreenWidth - 40 - realScreenWidth / 50)/2 + 'px';
+            allDivDUF.style.height = realScreenHeight - realScreenHeight/2.5 + 'px';
+            allDivDUF.style.width = (realScreenWidth - 40 - realScreenWidth / 50) / 2 - (realScreenWidth/50)*2 + 'px';
+            allDivDUF.style.padding = `${realScreenWidth/50}px`;
             const labelDUForms = document.querySelectorAll('.labelDUForm');
             const pRegDUForms = document.querySelectorAll('.pRegDUForm');
             if (labelDUForms && pRegDUForms) {
@@ -20,7 +21,7 @@ export const DataUserForm = ({ realScreenHeight }) => {
                 labelDUForms.forEach(lab => {
                     lab.style.width = screenWidth / (2.86 * coef) + 'px';
                     lab.style.fontSize = (screenWidth > 500) ? screenWidth / 55.56 + 'px' : '9px';
-                    lab.style.margin = screenWidth / 50 + 'px';
+                    lab.style.margin = screenWidth / 65 + 'px';
                     lab.style.marginRight = (screenWidth / 25) * coef + 'px';
                 });
                 pRegDUForms.forEach(p => {
