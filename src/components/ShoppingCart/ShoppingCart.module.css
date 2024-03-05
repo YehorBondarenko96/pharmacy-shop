@@ -1,13 +1,12 @@
 .divDataUsSavDr{
     display: flex;
-    gap: 20px;
 }
 
 .divTotButShC{
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    gap: 100px;
+    align-items: center;
 }
 
 .totShC{
@@ -21,10 +20,6 @@
     align-items: center;
     background-color: rgb(149, 200, 251);
     border: transparent;
-    border-radius: 15px;
-    width: 150px;
-    font-size: 18px;
-    gap: 15px;
     color: #000;
     cursor: pointer;
     transition: background-color 250ms cubic-bezier(0.25, 0.1, 0.25, 1), color 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -37,11 +32,13 @@
 
 .divSvgBShC{
     content: "";
-    width: 30px;
-    height: 30px;
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
     background-image: url('./trolley-ui-web-2-svgrepo-com.svg');
     transition: background-image 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.buttonShCForm:hover .divSvgBShC{
+    background-image: url('./trolley-ui-web-2-wight.svg');
 }
