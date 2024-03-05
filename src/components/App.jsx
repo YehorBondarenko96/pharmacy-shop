@@ -3,7 +3,7 @@ import { lazy } from "react";
 import { SharedLayout } from "./SharedLayout/SharedLayout";
 
 const Shop = lazy(() => import('./Shop/Shop'));
-
+const ShoppingCart = lazy(() => import('./ShoppingCart/ShoppingCart'));
 
 export const App = () => {
   return (
@@ -19,8 +19,8 @@ export const App = () => {
     >
       <Routes>
         <Route path='/' element={<SharedLayout />}>
-          <Route index element={<Shop/>}/>
-
+          <Route index element={<Shop />} />
+          <Route path="/shopping-cart" element={<ShoppingCart/>} />
         </Route>
           <Route path="*" element={<Navigate to="/" />} /> 
       </Routes>
