@@ -26,7 +26,7 @@ const drugsLSSlice = createSlice({
 
         },
         delDrFShop: (state, action) => {
-            const index = state.drugsForShop.indexOf(action.payload);
+            const index = state.drugsForShop.findIndex(d => d.id === action.payload.id);
             if(index === -1){
                 return null
             };

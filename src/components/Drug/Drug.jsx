@@ -10,7 +10,7 @@ export const Drug = ({ drug }) => {
     const shDr = useSelector(selectDrugsForShop);
 
     const isFav = favDr.includes(drug.id);
-    const inTrol = shDr.includes(drug.id);
+    const inTrol = shDr.some(sd => sd.id === drug.id);
 
     const addToBackedButRef = useRef(null);
     const drugDivRef = useRef(null);
@@ -36,19 +36,19 @@ export const Drug = ({ drug }) => {
         }
     };
 
-    const addDrSh = (id) => {
-        dispatch(addDrFShop(id));
+    const addDrSh = (d) => {
+        dispatch(addDrFShop(d));
     };
 
-    const delDrSh = (id) => {
-        dispatch(delDrFShop(id));
+    const delDrSh = (d) => {
+        dispatch(delDrFShop(d));
     };
 
-    const addTrOrDel = (id) => {
+    const addTrOrDel = (d) => {
         if (inTrol) {
-            delDrSh(id);
+            delDrSh(d);
         } else {
-            addDrSh(id);
+            addDrSh(d);
         }
     };
 
@@ -110,7 +110,7 @@ export const Drug = ({ drug }) => {
                 <p className={css.pInfoDrug}><b>Price: </b>{drug.price} &#8372;</p>
                 <p className={css.pInfoDrug}><b>Manufacturing date:</b> {drug.dataWasAdded}</p>
             </div>
-            <button ref={addToBackedButRef} className={css.addToBackedBut} onClick={() => addTrOrDel(drug.id)}>
+            <button ref={addToBackedButRef} className={css.addToBackedBut} onClick={() => addTrOrDel(drug)}>
                 {inTrol ? <span>Delete</span> : <span>Add</span>}
                 <div ref={divAddToBackedButRef} className={css.divAddToBackedBut}></div>
             </button>

@@ -10,20 +10,21 @@ export const DataUserForm = ({ realScreenHeight }) => {
     useEffect(() => {
         if (allDivDUFRef.current) {
             const allDivDUF = allDivDUFRef.current;
-            allDivDUF.style.height = realScreenHeight - 220 + 'px';
+            allDivDUF.style.height = realScreenHeight - 230 + 'px';
             allDivDUF.style.width = (realScreenWidth - 40 - realScreenWidth / 50)/2 + 'px';
             const labelDUForms = document.querySelectorAll('.labelDUForm');
             const pRegDUForms = document.querySelectorAll('.pRegDUForm');
             if (labelDUForms && pRegDUForms) {
-                const coef = 1000/realScreenWidth;
+                const coef = 1000 / realScreenWidth;
+                const screenWidth = realScreenWidth < 1000 ? realScreenWidth : 1000;
                 labelDUForms.forEach(lab => {
-                    lab.style.width = realScreenWidth / (2.86 * coef) + 'px';
-                    lab.style.fontSize = (realScreenWidth > 500) ? realScreenWidth / 55.56 + 'px' : '9px';
-                    lab.style.margin = realScreenWidth / 50 + 'px';
-                    lab.style.marginRight = (realScreenWidth / 25) * coef + 'px';
+                    lab.style.width = screenWidth / (2.86 * coef) + 'px';
+                    lab.style.fontSize = (screenWidth > 500) ? screenWidth / 55.56 + 'px' : '9px';
+                    lab.style.margin = screenWidth / 50 + 'px';
+                    lab.style.marginRight = (screenWidth / 25) * coef + 'px';
                 });
                 pRegDUForms.forEach(p => {
-                    p.style.marginLeft = realScreenWidth / 100 + 'px';
+                    p.style.marginLeft = screenWidth / 100 + 'px';
                 });
             }
         }
@@ -51,7 +52,7 @@ export const DataUserForm = ({ realScreenHeight }) => {
                     <span className={[css.pRegDUForm, 'pRegDUForm'].join(' ')}>Phone</span>
                 <input className={css.inputDUForm} 
                 name='phone'
-                type="number"
+                type="text"
                 autoComplete="off"
                 placeholder={realScreenWidth > 410 ? ("Please, enter your phone"):("Phone")} />
             </label>
