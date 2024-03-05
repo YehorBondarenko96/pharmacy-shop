@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/pharmacy-shop/static/css/main.7087823e.css",
-    "main.js": "/pharmacy-shop/static/js/main.1c5b990f.js",
+    "main.js": "/pharmacy-shop/static/js/main.07908793.js",
     "static/css/925.d4db27de.chunk.css": "/pharmacy-shop/static/css/925.d4db27de.chunk.css",
     "static/js/925.956b8b92.chunk.js": "/pharmacy-shop/static/js/925.956b8b92.chunk.js",
-    "static/css/728.1a9fbc0f.chunk.css": "/pharmacy-shop/static/css/728.1a9fbc0f.chunk.css",
-    "static/js/728.c9e830b6.chunk.js": "/pharmacy-shop/static/js/728.c9e830b6.chunk.js",
+    "static/css/728.84e00871.chunk.css": "/pharmacy-shop/static/css/728.84e00871.chunk.css",
+    "static/js/728.c18c6bae.chunk.js": "/pharmacy-shop/static/js/728.c18c6bae.chunk.js",
     "static/media/trolley-ui-web-2-svgrepo-com.svg": "/pharmacy-shop/static/media/trolley-ui-web-2-svgrepo-com.0544df991a2d6118e21a.svg",
     "static/media/trolley-ui-web-2-wight.svg": "/pharmacy-shop/static/media/trolley-ui-web-2-wight.9b869253a9acc0a99eb9.svg",
     "static/media/trolley-add.svg": "/pharmacy-shop/static/media/trolley-add.475f7c5f0eb262d8211b.svg",
@@ -21,14 +21,14 @@
     "static/media/arrow-up-wight.svg": "/pharmacy-shop/static/media/arrow-up-wight.b32dd6acc6f788b245b5.svg",
     "static/media/arrow-down-wight.svg": "/pharmacy-shop/static/media/arrow-down-wight.29e4efff3fe5b9304043.svg",
     "main.7087823e.css.map": "/pharmacy-shop/static/css/main.7087823e.css.map",
-    "main.1c5b990f.js.map": "/pharmacy-shop/static/js/main.1c5b990f.js.map",
+    "main.07908793.js.map": "/pharmacy-shop/static/js/main.07908793.js.map",
     "925.d4db27de.chunk.css.map": "/pharmacy-shop/static/css/925.d4db27de.chunk.css.map",
     "925.956b8b92.chunk.js.map": "/pharmacy-shop/static/js/925.956b8b92.chunk.js.map",
-    "728.1a9fbc0f.chunk.css.map": "/pharmacy-shop/static/css/728.1a9fbc0f.chunk.css.map",
-    "728.c9e830b6.chunk.js.map": "/pharmacy-shop/static/js/728.c9e830b6.chunk.js.map"
+    "728.84e00871.chunk.css.map": "/pharmacy-shop/static/css/728.84e00871.chunk.css.map",
+    "728.c18c6bae.chunk.js.map": "/pharmacy-shop/static/js/728.c18c6bae.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7087823e.css",
-    "static/js/main.1c5b990f.js"
+    "static/js/main.07908793.js"
   ]
 }
