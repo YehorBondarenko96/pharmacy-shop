@@ -6,7 +6,6 @@ import { selectDrugsForShop } from "../../redux/selectors";
 
 export const Navigation = () => {
     const drugsForShop = useSelector(selectDrugsForShop);
-    console.log('drugsForShop: ', drugsForShop);
 
     const divNavigationRef = useRef(null);
     const divNavShopCartRef = useRef(null);
