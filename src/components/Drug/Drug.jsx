@@ -103,14 +103,14 @@ export const Drug = ({ drug }) => {
     return (
         <li ref={drugLiRef} className={css.drugLi}>
         <div ref={drugDivRef} className={css.drugDiv}>
-            <button ref={favoriteRef} className={css.favoriteBut} onClick={() => addOrDel(drug.id)}></button>
+            <button type="button" ref={favoriteRef} className={css.favoriteBut} onClick={() => addOrDel(drug.id)}></button>
             <img ref={drugImgRef} className={css.drugImg} src={drug.image} alt={drug.name} />
             <div ref={infoDrugRef} className={css.infoDrug}>
                 <p className={css.pInfoDrug}><b>{drug.name}</b></p>
                 <p className={css.pInfoDrug}><b>Price: </b>{drug.price} &#8372;</p>
                 <p className={css.pInfoDrug}><b>Manufacturing date:</b> {drug.dataWasAdded}</p>
             </div>
-            <button ref={addToBackedButRef} className={css.addToBackedBut} onClick={() => addTrOrDel(drug)}>
+            <button type="button" ref={addToBackedButRef} className={css.addToBackedBut} onClick={() => addTrOrDel(drug)}>
                 {inTrol ? <span>Delete</span> : <span>Add</span>}
                 <div ref={divAddToBackedButRef} className={css.divAddToBackedBut}></div>
             </button>

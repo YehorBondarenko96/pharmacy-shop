@@ -149,7 +149,7 @@ export const SevDr = ({ drug }) => {
     return (
         <li ref={liSevDrRef} className={css.liSevDr}>
             <div ref={drugDivRef} className={css.drugDiv}>
-            <button ref={favoriteRef} className={css.favoriteBut} onClick={() => addOrDel(drug.id)}></button>
+            <button type="button" ref={favoriteRef} className={css.favoriteBut} onClick={() => addOrDel(drug.id)}></button>
             <img ref={drugImgRef} className={css.drugImg} src={drug.image} alt={drug.name} />
                 <div className={css.infInpSevDr}>
                     <div ref={infoDrugRef} className={css.infoDrug}>
@@ -185,6 +185,7 @@ export const SevDr = ({ drug }) => {
                             ></button>
                         </div>
                         <button
+                            type="button"
                             ref={addToBackedButRef}
                             className={css.addToBackedBut}
                             onClick={() => delDrSh(drug)}>

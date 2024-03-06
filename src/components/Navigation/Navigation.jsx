@@ -52,7 +52,7 @@ export const Navigation = () => {
             <Link to={'/'} className={css.aNavigation}>
                 <p ref={pNavigationRef} className={css.pNavigation}>Shop</p>
                 </Link>
-                <button ref={buttonNavShopCartRef} className={css.buttonNavShopCart}>
+                <button type="button" ref={buttonNavShopCartRef} className={css.buttonNavShopCart}>
                     <Link to={'/shopping-cart'} className={[css.aNavigation, css.aNavigationSecond].join(" ")}>
                         <div ref={divNavShopCartRef} className={css.divNavShopCart}>
                             <p className={[css.pNavigation, css.pNavShopCart].join(' ')}>Shopping Cart</p>

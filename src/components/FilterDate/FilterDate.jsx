@@ -96,7 +96,7 @@ export const FilterDate = () => {
     return (
         <div ref={allFiltAlfRef} className={css.allFiltAlf}>
             <div ref={secAllDivRef} className={css.secAllDiv}>
-                <button ref={allButtonFARef} className={css.allButtonFA} onClick={clickAllB}>
+                <button type="button" ref={allButtonFARef} className={css.allButtonFA} onClick={clickAllB}>
                     <p>{filVal}</p>
                 <div ref={divArrowRef} className={css.divArrow}></div>
             </button>

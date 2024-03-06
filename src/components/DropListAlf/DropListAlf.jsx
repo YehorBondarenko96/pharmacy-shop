@@ -53,19 +53,19 @@ export const DropListAlf = () => {
     return (
         <ul ref={ulDrLRef} className={css.ulDrL}>
             <li>
-                <button ref={firstChildRef} className={[css.buttonFA, css.firstChild, 'buttonFA'].join(" ")} onClick={() => {setState(a)}}>
+                <button type="button" ref={firstChildRef} className={[css.buttonFA, css.firstChild, 'buttonFA'].join(" ")} onClick={() => {setState(a)}}>
                     <p>A to Z</p>
                 <div className={[css.divArrow, 'divArrow'].join(" ")}></div>
                 </button>
             </li>
             <li>
-                <button className={[css.buttonFA, 'buttonFA'].join(" ")} onClick={() => {setState(z)}}>
+                <button type="button" className={[css.buttonFA, 'buttonFA'].join(" ")} onClick={() => {setState(z)}}>
                     <p>Z to A</p>
                 <div className={[css.divArrow, 'divArrow'].join(" ")}></div>
                 </button>
             </li>
             <li>
-                <button ref={lastChildRef} className={[css.buttonFA, css.lastChild, 'buttonFA'].join(" ")} onClick={() => {setState(n)}}>
+                <button type="button" ref={lastChildRef} className={[css.buttonFA, css.lastChild, 'buttonFA'].join(" ")} onClick={() => {setState(n)}}>
                     <p>Reset</p>
                 <div className={[css.divArrow, 'divArrow'].join(" ")}></div>
                 </button>
