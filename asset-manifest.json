@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/pharmacy-shop/static/css/main.749cf103.css",
-    "main.js": "/pharmacy-shop/static/js/main.e82a6ec5.js",
+    "main.js": "/pharmacy-shop/static/js/main.f887c2b6.js",
     "static/css/928.3a826b41.chunk.css": "/pharmacy-shop/static/css/928.3a826b41.chunk.css",
     "static/js/928.6f696ec3.chunk.js": "/pharmacy-shop/static/js/928.6f696ec3.chunk.js",
     "static/css/587.6d59cd4f.chunk.css": "/pharmacy-shop/static/css/587.6d59cd4f.chunk.css",
-    "static/js/587.29a63de3.chunk.js": "/pharmacy-shop/static/js/587.29a63de3.chunk.js",
+    "static/js/587.60037fe9.chunk.js": "/pharmacy-shop/static/js/587.60037fe9.chunk.js",
     "static/media/trolley-del-web-svgrepo-com.svg": "/pharmacy-shop/static/media/trolley-del-web-svgrepo-com.5220c887a48013572b1b.svg",
     "static/media/trolley-del-wight.svg": "/pharmacy-shop/static/media/trolley-del-wight.5035e4e03b6e6b69ac4b.svg",
     "static/media/trolley-ui-web-2-svgrepo-com.svg": "/pharmacy-shop/static/media/trolley-ui-web-2-svgrepo-com.0544df991a2d6118e21a.svg",
@@ -25,14 +25,14 @@
     "static/media/minus-svgrepo-com.svg": "/pharmacy-shop/static/media/minus-svgrepo-com.1c3ca1f56805053477a8.svg",
     "static/media/plus-svgrepo-com.svg": "/pharmacy-shop/static/media/plus-svgrepo-com.e82348e66715b051e66d.svg",
     "main.749cf103.css.map": "/pharmacy-shop/static/css/main.749cf103.css.map",
-    "main.e82a6ec5.js.map": "/pharmacy-shop/static/js/main.e82a6ec5.js.map",
+    "main.f887c2b6.js.map": "/pharmacy-shop/static/js/main.f887c2b6.js.map",
     "928.3a826b41.chunk.css.map": "/pharmacy-shop/static/css/928.3a826b41.chunk.css.map",
     "928.6f696ec3.chunk.js.map": "/pharmacy-shop/static/js/928.6f696ec3.chunk.js.map",
     "587.6d59cd4f.chunk.css.map": "/pharmacy-shop/static/css/587.6d59cd4f.chunk.css.map",
-    "587.29a63de3.chunk.js.map": "/pharmacy-shop/static/js/587.29a63de3.chunk.js.map"
+    "587.60037fe9.chunk.js.map": "/pharmacy-shop/static/js/587.60037fe9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.749cf103.css",
-    "static/js/main.e82a6ec5.js"
+    "static/js/main.f887c2b6.js"
   ]
 }
