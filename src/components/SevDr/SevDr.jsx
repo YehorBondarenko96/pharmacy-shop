@@ -68,7 +68,8 @@ export const SevDr = ({ drug }) => {
     const forPlus = (d) => {
         const newValP = Number(d.quantity) + 1;
         if (newValP > 0) {
-            setStInp(d, newValP);
+            const newVP = String(newValP);
+            setStInp(d, newVP);
         } else{
             delDrSh(d);
         };
@@ -77,7 +78,8 @@ export const SevDr = ({ drug }) => {
     const forMin = (d) => {
         const newValM = Number(d.quantity) - 1;
         if (newValM > 0) {
-            setStInp(d, newValM);
+            const newVM = String(newValM);
+            setStInp(d, newVM);
         } else{
             delDrSh(d);
         };
