@@ -10,6 +10,8 @@ export const selectDataUser = state => state.drugsLS.orderData.user;
 
 export const selectFilter = state => state.filter.input;
 
+export const selectFilterPharm = state => state.filter.pharm;
+
 export const selectFilterAlf = state => state.filter.alf;
 
 export const selectFilterPrice = state => state.filter.price;
