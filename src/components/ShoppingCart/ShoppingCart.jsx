@@ -2,11 +2,24 @@ import css from "./ShoppingCart.module.css";
 import { DataUserForm } from "../DataUserForm/DataUserForm";
 import { SavedDrugs } from "../SavedDrugs/SavedDrugs";
 import { useEffect, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { selectDrugsForShop } from "../../redux/selectors";
+import { delAllDrSh } from "../../redux/drugsLSSlice";
 
 const ShoppingCart = () => {
+    const disp = useDispatch();
+
     const realScreenHeight = window.innerHeight;
+    const drForSh = useSelector(selectDrugsForShop);
 
     let allPrice = 0;
+    if (drForSh.length > 0) {
+        let allPr = 0;
+        drForSh.forEach(dr => {
+            allPr += Number(dr.price.replace(/,/g, ".")) * Number(dr.quantity);
+        });
+        allPrice = allPr.toFixed(2).replace(/\./g, ",")
+    };
 
     const divDataUsSavDrRef = useRef(null);
     const divTotButShCRef = useRef(null);
@@ -15,6 +28,10 @@ const ShoppingCart = () => {
     const divSvgBDelRef = useRef(null);
     const divSvgBShCRef = useRef(null);
     const totShCRef = useRef(null);
+
+    const forAllDel = () => {
+        disp(delAllDrSh());
+    };
 
     useEffect(() => {
         if (divDataUsSavDrRef.current&& divTotButShCRef.current && buttonShCFormRef.current &&
@@ -28,7 +45,7 @@ const ShoppingCart = () => {
             const divSvgBShC = divSvgBShCRef.current;
             const totShC = totShCRef.current;
             divDataUsSavDr.style.gap = realScreenWidth / 50 + 'px';
-            divTotButShC.style.gap = realScreenWidth / 10 + 'px';
+            divTotButShC.style.gap = realScreenWidth / 50 + 'px';
             divTotButShC.style.paddingTop = realScreenWidth / 100 + 'px';
             buttonShDel.style.width = realScreenWidth / 6.67 + 'px';
             buttonShDel.style.borderRadius = realScreenWidth/66.67 + 'px';
@@ -56,7 +73,11 @@ const ShoppingCart = () => {
                 </div>
                 <div ref={divTotButShCRef} className={css.divTotButShC}>
                     <p ref={totShCRef} className={css.totShC}><b>Total price: {allPrice} &#8372;</b></p>
-                <button ref={buttonShDelRef} className={css.buttonShCForm} type="submit">
+                    <button
+                        ref={buttonShDelRef}
+                        className={css.buttonShCForm}
+                        onClick={forAllDel}
+                        type="button">
                     <p>Delete All</p>
                     <div ref={divSvgBDelRef} className={css.divSvgBDel}></div>
                 </button>

@@ -16,13 +16,33 @@ export const DataUserForm = ({ realScreenHeight }) => {
             const labelDUForms = document.querySelectorAll('.labelDUForm');
             const pRegDUForms = document.querySelectorAll('.pRegDUForm');
             if (labelDUForms && pRegDUForms) {
-                const coef = 1000 / realScreenWidth;
+                let coef = 1000 / realScreenWidth;
+                let secCoef = 1.3;
+                if (realScreenWidth < 900 && realScreenWidth >= 800) {
+                    coef = 900 / realScreenWidth;
+                } else if (realScreenWidth < 800 && realScreenWidth >= 700) {
+                    coef = 800 / realScreenWidth;
+                } else if (realScreenWidth < 700 && realScreenWidth >= 600) {
+                    coef = 700 / realScreenWidth;
+                } else if (realScreenWidth < 600 && realScreenWidth >= 500) {
+                    coef = 600 / realScreenWidth;
+                } else if (realScreenWidth < 500 && realScreenWidth >= 400) {
+                    coef = 500 / realScreenWidth;
+                } else if (realScreenWidth < 400 && realScreenWidth >= 350) {
+                    coef = 450 / realScreenWidth;
+                } else if (realScreenWidth < 350 && realScreenWidth >= 310) {
+                    coef = 390 / realScreenWidth;
+                    secCoef = 1.6;
+                } else if (realScreenWidth < 310) {
+                    coef = 380 / realScreenWidth;
+                    secCoef = 1.7;
+                };
                 const screenWidth = realScreenWidth < 1000 ? realScreenWidth : 1000;
                 labelDUForms.forEach(lab => {
                     lab.style.width = screenWidth / (2.86 * coef) + 'px';
                     lab.style.fontSize = (screenWidth > 500) ? screenWidth / 55.56 + 'px' : '9px';
                     lab.style.margin = screenWidth / 65 + 'px';
-                    lab.style.marginRight = (screenWidth / 25) * coef + 'px';
+                    lab.style.marginRight = (screenWidth / 25) * coef * secCoef + 'px';
                 });
                 pRegDUForms.forEach(p => {
                     p.style.marginLeft = screenWidth / 100 + 'px';
@@ -39,31 +59,31 @@ export const DataUserForm = ({ realScreenHeight }) => {
                 type="text"
                 autoComplete="on"
                 autoFocus
-                placeholder={realScreenWidth > 410 ? ("Please, enter your name"):("Name")} />
+                placeholder={realScreenWidth > 455 ? ("Please, enter your name"):("Name")} />
             </label>
             <label className={[css.labelDUForm, 'labelDUForm'].join(' ')}>
                     <span className={[css.pRegDUForm, 'pRegDUForm'].join(' ')}>Email</span>
                 <input className={css.inputDUForm} 
                 name='email'
                 type="email"
-                autoComplete="off"
-                placeholder={realScreenWidth > 410 ? ("Please, enter your email"):("Email")} />
+                autoComplete="on"
+                placeholder={realScreenWidth > 455 ? ("Please, enter your email"):("Email")} />
             </label>
             <label className={[css.labelDUForm, 'labelDUForm'].join(' ')}>
                     <span className={[css.pRegDUForm, 'pRegDUForm'].join(' ')}>Phone</span>
                 <input className={css.inputDUForm} 
                 name='phone'
                 type="text"
-                autoComplete="off"
-                placeholder={realScreenWidth > 410 ? ("Please, enter your phone"):("Phone")} />
+                autoComplete="on"
+                placeholder={realScreenWidth > 455 ? ("Please, enter your phone"):("Phone")} />
             </label>
             <label className={[css.labelDUForm, 'labelDUForm'].join(' ')}>
                     <span className={[css.pRegDUForm, 'pRegDUForm'].join(' ')}>Address</span>
                 <input className={css.inputDUForm} 
                 name='address'
                 type="text"
-                autoComplete="off"
-                placeholder={realScreenWidth > 410 ? ("Please, enter your address"):("Address")} />
+                autoComplete="on"
+                placeholder={realScreenWidth > 455 ? ("Please, enter your address"):("Address")} />
             </label>
         </div>
     )

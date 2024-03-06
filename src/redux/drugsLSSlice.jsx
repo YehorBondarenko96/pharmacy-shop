@@ -38,6 +38,9 @@ const drugsLSSlice = createSlice({
                 return null
             };
             state.drugsForShop[index].quantity = action.payload.quantity;
+        },
+        delAllDrSh: (state, action) => {
+            state.drugsForShop = [];
         }
     }
 });
@@ -47,7 +50,8 @@ export const {
     delFavoriteDrugs,
     addDrFShop,
     delDrFShop,
-    setQuantityShop
+    setQuantityShop,
+    delAllDrSh
 } = drugsLSSlice.actions;
 
 export const drugsLSReducer = drugsLSSlice.reducer;
