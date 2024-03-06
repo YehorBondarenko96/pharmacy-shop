@@ -1,4 +1,4 @@
-import css from "./Pharmacy.module.css";
+import css from "../PharmaciesList/PharmaciesList.module.css";
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPhafm } from "../../redux/filterSlice";

@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectDrugs, selectFavoriteDrugs, selectFilter, selectFilterAlf } from "../../redux/selectors";
+import { selectDrugs, selectPharmacies, selectFavoriteDrugs, selectFilter, selectFilterPharm, selectFilterAlf } from "../../redux/selectors";
 import css from "./DrugsList.module.css";
 import { Drug } from "../Drug/Drug";
 import { useEffect, useRef, useState } from "react";
@@ -9,12 +9,16 @@ export const DrugsList = ({realScreenHeight}) => {
     const fevDrugsId = useSelector(selectFavoriteDrugs);
     const filter = useSelector(selectFilter);
     const selAlf = useSelector(selectFilterAlf);
+    const allPharm = useSelector(selectPharmacies);
+    const actId = useSelector(selectFilterPharm);
 
     const [drugs, setDrugs] = useState(allDrugs);
     const [fevDrRend, setFevDrRend] = useState([]);
     const [notFvDrRend, setNotFvDrRend] = useState([]);
 
     const fevDrugsIdRef = useRef(fevDrugsId);
+
+    
 
     // useEffect(() => {
     //     switch (selAlf) {
@@ -39,25 +43,26 @@ export const DrugsList = ({realScreenHeight}) => {
 
     useEffect(() => {
         let pasDrugs = [...allDrugs];
+
+        if (actId !== "") {
+        const actPh = allPharm.find(p => p.id === actId);
+        pasDrugs = [...actPh.available];
+    };
+        
         if (pasDrugs.length > 0) {
             switch (selAlf) {
         case "a":
-            // const drA = [...pasDrugs];
                 pasDrugs.sort((a, b) => {
                 return a.name.localeCompare(b.name);
             });
-            // setDrugs(drA);
                 break;
             case "z":
-            // const drZ = [...allDrugs];
                 pasDrugs.sort((a, b) => {
                 return b.name.localeCompare(a.name);
             });
-            // setDrugs(drZ);
                 break;
-            default:
-                // setDrugs(allDrugs);
-                pasDrugs = allDrugs;
+                default:
+                    break
         };
 
 
@@ -68,7 +73,7 @@ export const DrugsList = ({realScreenHeight}) => {
             setDrugs(pasDrugs);
         };
         }
-    }, [filter, allDrugs, selAlf]);
+    }, [filter, allDrugs, selAlf, actId, allPharm]);
     
     useEffect(() => {
         if (fevDrugsIdRef.current.length > 0) {
@@ -98,15 +103,15 @@ export const DrugsList = ({realScreenHeight}) => {
             {drugs.length > 0 ? (fevDrRend.length > 0 ? (
                 <>
                 <ul ref={drugsUlRef} className={[css.drugsUl, 'drugsUl'].join(' ')}>
-                        {fevDrRend.map(dr => (<Drug key={dr.id} drug={dr} />))}
-                        {notFvDrRend.map(dr => (<Drug key={dr.id} drug={dr}/>))}
+                        {fevDrRend.map(dr => (<Drug key={dr.id + (Math.random() * 1000000000)} drug={dr} />))}
+                        {notFvDrRend.map(dr => (<Drug key={dr.id + (Math.random() * 1000000000)} drug={dr}/>))}
                         
                 </ul>
                 </>
             ): (
                 <>
                 <ul ref={drugsUlRef} className={[css.drugsUl, 'drugsUl'].join(' ')}>
-                        {drugs.map(dr => (<Drug key={dr.id} drug={dr}/>))}
+                        {drugs.map(dr => (<Drug key={dr.id + (Math.random() * 1000000000)} drug={dr}/>))}
                 </ul>
                 </>
         )
