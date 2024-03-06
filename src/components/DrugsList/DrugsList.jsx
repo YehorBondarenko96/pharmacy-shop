@@ -85,11 +85,12 @@ export const DrugsList = ({realScreenHeight}) => {
             };
             
             switch (selDate) {
-        case "a":
-                pasDrugs.sort((a, b) => parseDate(a.dataWasAdded) - parseDate(b.dataWasAdded));
-                break;
-            case "z":
+        case "w":
                 pasDrugs.sort((a, b) => parseDate(b.dataWasAdded) - parseDate(a.dataWasAdded));
+                
+                break;
+                case "o":
+                    pasDrugs.sort((a, b) => parseDate(a.dataWasAdded) - parseDate(b.dataWasAdded));
                 break;
                 default:
                     break

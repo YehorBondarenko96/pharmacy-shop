@@ -1,5 +1,5 @@
 import css from './FilterPrice.module.css';
-import { DropListAlf } from '../DropListPrice/DropListPrice';
+import { DropListPrice } from '../DropListPrice/DropListPrice';
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectFilterPrice } from '../../redux/selectors';
@@ -23,11 +23,11 @@ export const FilterPrice = () => {
     useEffect(() => {
         if (allButtonFARef.current) {
             switch (selPr) {
-                case "a":
+                case "l":
                     setFilVal(l);
                     allButtonFARef.current.classList.add(css.allButtonFAAct);
                     break;
-                case "z":
+                case "h":
                     setFilVal(h);
                     allButtonFARef.current.classList.add(css.allButtonFAAct);
                     break;
@@ -101,7 +101,7 @@ export const FilterPrice = () => {
                 <div ref={divArrowRef} className={css.divArrow}></div>
             </button>
             <div ref={divDrLRef} className={css.divDrL}>
-                <DropListAlf/>
+                <DropListPrice/>
             </div>
             </div>
         </div>

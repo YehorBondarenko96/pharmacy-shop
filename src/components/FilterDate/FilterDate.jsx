@@ -1,8 +1,8 @@
 import css from './FilterDate.module.css';
-import { DropListAlf } from '../DropListDate/DropListDate';
+import { DropListDate } from '../DropListDate/DropListDate';
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectFilterAlf } from '../../redux/selectors';
+import { selectFilterDate } from '../../redux/selectors';
 
 export const FilterDate = () => {
     const allFiltAlfRef = useRef(null);
@@ -13,31 +13,31 @@ export const FilterDate = () => {
 
     const [drListOn, setDrListOn] = useState(false);
 
-    const a = 'A to Z';
-    const z = 'Z to A';
+    const w = 'N to O';
+    const o = 'O to N';
 
-    const [filVal, setFilVal] = useState(a);
+    const [filVal, setFilVal] = useState(w);
 
-    const selAlf = useSelector(selectFilterAlf);
+    const selDate = useSelector(selectFilterDate);
 
     useEffect(() => {
         if (allButtonFARef.current) {
-            switch (selAlf) {
-                case "a":
-                    setFilVal(a);
+            switch (selDate) {
+                case "w":
+                    setFilVal(w);
                     allButtonFARef.current.classList.add(css.allButtonFAAct);
                     break;
-                case "z":
-                    setFilVal(z);
+                case "o":
+                    setFilVal(o);
                     allButtonFARef.current.classList.add(css.allButtonFAAct);
                     break;
                 default:
-                    setFilVal(a);
+                    setFilVal(w);
                     allButtonFARef.current.classList.remove(css.allButtonFAAct);
 
     };
         }
-    }, [selAlf]);
+    }, [selDate]);
 
     useEffect(() => {
         if (allFiltAlfRef.current && secAllDivRef.current && allButtonFARef.current &&
@@ -101,7 +101,7 @@ export const FilterDate = () => {
                 <div ref={divArrowRef} className={css.divArrow}></div>
             </button>
             <div ref={divDrLRef} className={css.divDrL}>
-                <DropListAlf/>
+                <DropListDate/>
             </div>
             </div>
         </div>

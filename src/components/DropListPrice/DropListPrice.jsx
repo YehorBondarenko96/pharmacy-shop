@@ -1,13 +1,13 @@
 import css from "./DropListPrice.module.css";
-import { setPrice } from "../../redux/filterSlice";
+import { setPrice, setAlf, setDate } from "../../redux/filterSlice";
 import { useDispatch } from "react-redux";
 import { useRef, useEffect } from "react";
 
-export const DropListAlf = () => {
+export const DropListPrice = () => {
     const disp = useDispatch();
-    const a = "a";
+    const l = "l";
     const n = "n";
-    const z = "z";
+    const h = "h";
 
     const ulDrLRef = useRef(null);
     const firstChildRef = useRef(null);
@@ -15,6 +15,8 @@ export const DropListAlf = () => {
 
     const setState = (l) => {
         disp(setPrice(l));
+        disp(setAlf(n));
+        disp(setDate(n));
     };
 
     useEffect(() => {
@@ -51,14 +53,14 @@ export const DropListAlf = () => {
     return (
         <ul ref={ulDrLRef} className={css.ulDrL}>
             <li>
-                <button ref={firstChildRef} className={[css.buttonFA, css.firstChild, 'buttonFA'].join(" ")} onClick={() => {setState(a)}}>
-                    <p>A to Z</p>
+                <button ref={firstChildRef} className={[css.buttonFA, css.firstChild, 'buttonFA'].join(" ")} onClick={() => {setState(l)}}>
+                    <p>L to H</p>
                 <div className={[css.divArrow, 'divArrow'].join(" ")}></div>
                 </button>
             </li>
             <li>
-                <button className={[css.buttonFA, 'buttonFA'].join(" ")} onClick={() => {setState(z)}}>
-                    <p>Z to A</p>
+                <button className={[css.buttonFA, 'buttonFA'].join(" ")} onClick={() => {setState(h)}}>
+                    <p>H to L</p>
                 <div className={[css.divArrow, 'divArrow'].join(" ")}></div>
                 </button>
             </li>

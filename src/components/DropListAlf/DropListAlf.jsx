@@ -1,5 +1,5 @@
 import css from "./DropListAlf.module.css";
-import { setAlf } from "../../redux/filterSlice";
+import { setAlf, setPrice, setDate } from "../../redux/filterSlice";
 import { useDispatch } from "react-redux";
 import { useRef, useEffect } from "react";
 
@@ -15,6 +15,8 @@ export const DropListAlf = () => {
 
     const setState = (l) => {
         disp(setAlf(l));
+        disp(setPrice(n));
+        disp(setDate(n));
     };
 
     useEffect(() => {
