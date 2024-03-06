@@ -120,7 +120,7 @@ export const DrugsList = ({realScreenHeight}) => {
             const realScreenWidth = window.innerWidth;
         if (allDrugsListDivRef.current) {
             const allDrugsListDiv = allDrugsListDivRef.current;
-            allDrugsListDiv.style.height = `${realScreenHeight - 200}px`;
+            allDrugsListDiv.style.height = `${realScreenHeight - realScreenHeight/3}px`;
             allDrugsListDiv.style.margin = `0 0 0 ${realScreenWidth / 72}px`;
         
             if (drugsUlRef.current) {

@@ -27,7 +27,7 @@ export const PharmaciesList = ({realScreenHeight}) => {
             const allPharmaciesListDiv = allPharmaciesListDivRef.current;
             const pharmaciesHlll = pharmaciesHlllRef.current; 
             const pharmaciesUl = pharmaciesUlRef.current;
-            allPharmaciesListDiv.style.height = `${realScreenHeight - 200}px`;
+            allPharmaciesListDiv.style.height = `${realScreenHeight - realScreenHeight/3}px`;
             pharmaciesHlll.style.margin = `${realScreenWidth / 72}px 0 0 0`;
             pharmaciesHlll.style.fontSize = `${realScreenWidth / 80}px`;
             pharmaciesUl.style.padding = `${realScreenWidth / 72}px ${realScreenWidth / 48}px`;
