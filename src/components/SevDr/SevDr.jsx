@@ -1,6 +1,6 @@
 import css from "./SevDr.module.css";
 import { useEffect, useRef } from "react";
-import { addFavoriteDrugs, delFavoriteDrugs, delDrFShop } from "../../redux/drugsLSSlice";
+import { addFavoriteDrugs, delFavoriteDrugs, delDrFShop, setQuantityShop } from "../../redux/drugsLSSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFavoriteDrugs } from "../../redux/selectors";
 
@@ -20,7 +20,6 @@ export const SevDr = ({ drug }) => {
     const inpButSevDrRef = useRef(null);
     const addToBackedButRef = useRef(null);
     const divDelToBackedButRef = useRef(null);
-    const divInputRef = useRef(null);
     const inputSavDrRef = useRef(null);
     const plusButRef = useRef(null); 
     const minButRef = useRef(null);
@@ -45,11 +44,50 @@ export const SevDr = ({ drug }) => {
         dispatch(delDrFShop(d));
     };
 
+    const setStInp = (d, inpValue) => {
+        const data = {
+            id: d.id,
+            quantity: inpValue
+        };
+        dispatch(setQuantityShop(data));
+    };
+
+    const updateValueInp = (d, evt) => {
+        evt.preventDefault();
+        const inpValue = evt.target.value;
+        setStInp(d, inpValue);
+    };
+
+    const forBlur = (d, evt) => {
+        const inpV = evt.target.value;
+        if (Number(inpV) <= 0) {
+            delDrSh(d);
+        };
+    };
+
+    const forPlus = (d) => {
+        const newValP = Number(d.quantity) + 1;
+        if (newValP > 0) {
+            setStInp(d, newValP);
+        } else{
+            delDrSh(d);
+        };
+    };
+
+    const forMin = (d) => {
+        const newValM = Number(d.quantity) - 1;
+        if (newValM > 0) {
+            setStInp(d, newValM);
+        } else{
+            delDrSh(d);
+        };
+    };
+
     useEffect(() => {
         if (liSevDrRef.current && drugDivRef.current && pNumeDrugRef.current &&
             favoriteRef.current && infoDrugRef.current && drugImgRef.current &&
             inpButSevDrRef.current && addToBackedButRef.current && divDelToBackedButRef.current &&
-            inputSavDrRef.current && divInputRef.current && plusButRef.current && minButRef.current) {
+            inputSavDrRef.current && plusButRef.current && minButRef.current) {
             const realScreenWidth = window.innerWidth;
             const drugLi = liSevDrRef.current;
             const drugDiv = drugDivRef.current;
@@ -60,7 +98,6 @@ export const SevDr = ({ drug }) => {
             const inpButSevDr = inpButSevDrRef.current;
             const addToBackedBut = addToBackedButRef.current;
             const divDelToBackedBut = divDelToBackedButRef.current;
-            // const divInput = divInputRef.current;
             const inputSavDr = inputSavDrRef.current;
             const plusBut = plusButRef.current;
             const minBut = minButRef.current;
@@ -84,12 +121,16 @@ export const SevDr = ({ drug }) => {
             inputSavDr.style.width = realScreenWidth > 450 ? realScreenWidth / 24 + 'px' : realScreenWidth / 50 + 'px';
             inputSavDr.style.height = realScreenWidth / 24 - 2 + 'px';
             inputSavDr.style.borderRadius = realScreenWidth / 72 + 'px';
+            inputSavDr.style.fontSize = realScreenWidth / 60 + 'px';
+
             plusBut.style.height = realScreenWidth / 24 + 'px';
             minBut.style.height = realScreenWidth / 24 + 'px';
-            plusBut.style.width = realScreenWidth / 50 + 'px';
+            plusBut.style.width =realScreenWidth / 50 + 'px';
             minBut.style.width = realScreenWidth / 50 + 'px';
             plusBut.style.fontSize = realScreenWidth / 40 + 'px';
             minBut.style.fontSize = realScreenWidth / 40 + 'px';
+            plusBut.style.right = realScreenWidth > 900 ? realScreenWidth / 600 + 'px' : realScreenWidth / 300 + 'px';
+            minBut.style.left = realScreenWidth > 900 ? realScreenWidth / 600 + 'px' : realScreenWidth / 300 + 'px';
 
             addToBackedBut.style.width = realScreenWidth / 13 + 'px';
             addToBackedBut.style.height = realScreenWidth / 24 + 'px';
@@ -117,21 +158,36 @@ export const SevDr = ({ drug }) => {
                 <p className={css.pInfoDrug}><b>Manufacturing date:</b> {drug.dataWasAdded}</p>
                 </div>
                     <div ref={inpButSevDrRef} className={css.inpButSevDr}>
-                        <div ref={divInputRef} className={css.divInput}>
-                            <button ref={minButRef} className={css.minBut}>
-                                <span>-</span>
-                            </button>
+                        <div className={css.divInput}>
+                            <button
+                                type="button"
+                                ref={minButRef}
+                                className={css.minBut}
+                                onClick={() => forMin(drug)}
+                            ></button>
                             <input
                                 ref={inputSavDrRef}
                                 className={css.inputSavDr}
-                                name='name'
-                                type="number"
+                                name='quantity'
+                                type="text"
+                                onInput={(e) => {
+                                    e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                                }}
+                                value={drug.quantity}
+                                onChange={e => updateValueInp(drug, e)}
+                                onBlur={e => forBlur(drug, e)}
                             />
-                            <button ref={plusButRef} className={css.plusBut}>
-                                <span>+</span>
-                            </button>
+                            <button
+                                type="button"
+                                ref={plusButRef}
+                                className={css.plusBut}
+                                onClick={() => forPlus(drug)}
+                            ></button>
                         </div>
-                        <button ref={addToBackedButRef} className={css.addToBackedBut} onClick={() => delDrSh(drug)}>
+                        <button
+                            ref={addToBackedButRef}
+                            className={css.addToBackedBut}
+                            onClick={() => delDrSh(drug)}>
                 <span>Delete</span>
                 <div ref={divDelToBackedButRef} className={css.divDelToBackedBut}></div>
             </button>

@@ -31,10 +31,24 @@ const drugsLSSlice = createSlice({
                 return null
             };
             state.drugsForShop.splice(index, 1);
+        },
+        setQuantityShop: (state, action) => {
+            const index = state.drugsForShop.findIndex(d => d.id === action.payload.id);
+            if(index === -1){
+                return null
+            };
+            state.drugsForShop[index].quantity = action.payload.quantity;
         }
     }
 });
 
-export const { addFavoriteDrugs, delFavoriteDrugs, addDrFShop, delDrFShop } = drugsLSSlice.actions;
+export const {
+    addFavoriteDrugs,
+    delFavoriteDrugs,
+    addDrFShop,
+    delDrFShop,
+    setQuantityShop
+} = drugsLSSlice.actions;
+
 export const drugsLSReducer = drugsLSSlice.reducer;
 

@@ -9,23 +9,34 @@ export const SavedDrugs = ({realScreenHeight}) => {
 
     const allDivSDRef = useRef(null);
     const ulSDRef = useRef(null);
+    const nothPRef = useRef(null);
 
     useEffect(() => {
-        if (allDivSDRef.current && ulSDRef.current) {
+        if (allDivSDRef.current) {
             const realScreenWidth = window.innerWidth;
             const allDivSD = allDivSDRef.current;
-            const ulSD = ulSDRef.current;
             allDivSD.style.height = realScreenHeight - realScreenHeight/2.5 + 'px';
             allDivSD.style.width = (realScreenWidth - 40 - realScreenWidth / 50) / 2 - (realScreenWidth/50)*2 + 'px';
-            ulSD.style.gap = realScreenWidth / 50 + 'px';
-            allDivSD.style.padding = `${realScreenWidth/50}px`;
+            allDivSD.style.padding = `${realScreenWidth / 50}px`;
+            if (ulSDRef.current) {
+                const ulSD = ulSDRef.current;
+                ulSD.style.gap = realScreenWidth / 50 + 'px';
+            };
+            if (nothPRef.current) { 
+                const nothP = nothPRef.current;
+                nothP.style.fontSize = realScreenWidth / 42 + 'px';
+            };
         }
     });
     return (
         <div ref={allDivSDRef} className={[css.allDivSD, 'allDivSD'].join(' ')}>
+            {drugsSh.length > 0 ? (
             <ul ref={ulSDRef} className={[css.ulSD, 'ulSD'].join(' ')}>
                 {drugsSh.map(d => <SevDr key={d.id} drug={d}/>)}
             </ul>
+            ) : (
+                    <p ref={nothPRef}>You haven't selected any products yet</p>
+            )}
         </div>
     )
 };

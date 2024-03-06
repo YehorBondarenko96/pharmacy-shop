@@ -68,6 +68,7 @@
 .inputSavDr{
     margin: 0;
     display: flex;
+    text-align: center;
     border: 1px grey solid;
     padding: 0 10px;
 }
@@ -79,8 +80,13 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    left: 3px;
-    bottom: 2px;
+    bottom: 0;
+    content: "";
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('./minus-svgrepo-com.svg');
+    padding: 0;
 }
 
 .plusBut{
@@ -90,8 +96,13 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    right: 5px;
     top: 0;
+    content: "";
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('./plus-svgrepo-com.svg');
+    padding: 0;
 }
 
 .addToBackedBut {
@@ -130,8 +141,12 @@
         background-size: 80%;
     }
 
-    .minBut{
-        bottom: 1px;
+    .minBut {
+        background-size: 60%;
+    }
+
+    .plusBut {
+        background-size: 80%;
     }
 }
 

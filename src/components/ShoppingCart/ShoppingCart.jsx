@@ -6,28 +6,40 @@ import { useEffect, useRef } from "react";
 const ShoppingCart = () => {
     const realScreenHeight = window.innerHeight;
 
+    let allPrice = 0;
+
     const divDataUsSavDrRef = useRef(null);
     const divTotButShCRef = useRef(null);
+    const buttonShDelRef = useRef(null);
     const buttonShCFormRef = useRef(null);
+    const divSvgBDelRef = useRef(null);
     const divSvgBShCRef = useRef(null);
     const totShCRef = useRef(null);
 
     useEffect(() => {
         if (divDataUsSavDrRef.current&& divTotButShCRef.current && buttonShCFormRef.current &&
-            divSvgBShCRef.current && totShCRef.current) {
+            divSvgBShCRef.current && totShCRef.current && buttonShDelRef.current && divSvgBDelRef.current) {
             const realScreenWidth = window.innerWidth;
             const divDataUsSavDr = divDataUsSavDrRef.current;
             const divTotButShC = divTotButShCRef.current;
+            const buttonShDel = buttonShDelRef.current;
             const buttonShCForm = buttonShCFormRef.current;
+            const divSvgBDel = divSvgBDelRef.current;
             const divSvgBShC = divSvgBShCRef.current;
             const totShC = totShCRef.current;
             divDataUsSavDr.style.gap = realScreenWidth / 50 + 'px';
             divTotButShC.style.gap = realScreenWidth / 10 + 'px';
             divTotButShC.style.paddingTop = realScreenWidth / 100 + 'px';
+            buttonShDel.style.width = realScreenWidth / 6.67 + 'px';
+            buttonShDel.style.borderRadius = realScreenWidth/66.67 + 'px';
+            buttonShDel.style.fontSize = realScreenWidth/55.556 + 'px';
+            buttonShDel.style.gap = realScreenWidth/66.67 + 'px';
             buttonShCForm.style.width = realScreenWidth / 6.67 + 'px';
             buttonShCForm.style.borderRadius = realScreenWidth/66.67 + 'px';
             buttonShCForm.style.fontSize = realScreenWidth/55.556 + 'px';
-            buttonShCForm.style.gap = realScreenWidth/66.67 + 'px';
+            buttonShCForm.style.gap = realScreenWidth / 66.67 + 'px';
+            divSvgBDel.style.width = realScreenWidth / 33.33 + 'px';
+            divSvgBDel.style.height = realScreenWidth / 33.33 + 'px';
             divSvgBShC.style.width = realScreenWidth / 33.33 + 'px';
             divSvgBShC.style.height = realScreenWidth / 33.33 + 'px';
             totShC.style.fontSize = realScreenWidth/41.667 + 'px';
@@ -43,7 +55,11 @@ const ShoppingCart = () => {
                     <SavedDrugs realScreenHeight={realScreenHeight}/>
                 </div>
                 <div ref={divTotButShCRef} className={css.divTotButShC}>
-                        <p ref={totShCRef} className={css.totShC}><b>Total price: </b></p>
+                    <p ref={totShCRef} className={css.totShC}><b>Total price: {allPrice} &#8372;</b></p>
+                <button ref={buttonShDelRef} className={css.buttonShCForm} type="submit">
+                    <p>Delete All</p>
+                    <div ref={divSvgBDelRef} className={css.divSvgBDel}></div>
+                </button>
                 <button ref={buttonShCFormRef} className={css.buttonShCForm} type="submit">
                     <p>To buy</p>
                     <div ref={divSvgBShCRef} className={css.divSvgBShC}></div>

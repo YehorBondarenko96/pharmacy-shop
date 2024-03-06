@@ -7,6 +7,14 @@ import { selectDrugsForShop } from "../../redux/selectors";
 export const Navigation = () => {
     const drugsForShop = useSelector(selectDrugsForShop);
 
+    let allQuan = 0;
+    if (drugsForShop.length > 0) {
+        drugsForShop.forEach(dr => {
+            allQuan += Number(dr.quantity);
+        }
+        );
+    };
+
     const divNavigationRef = useRef(null);
     const divNavShopCartRef = useRef(null);
     const buttonNavShopCartRef = useRef(null);
@@ -48,7 +56,7 @@ export const Navigation = () => {
                             {drugsForShop.length > 0 &&
                                 <div ref={divPLenDrRef} className={css.divPLenDr}>
                                 <p ref={pLenDrRef} className={css.pLenDr}>
-                                    {drugsForShop.length}
+                                    {allQuan}
                                 </p>
                                 </div>
                             }
