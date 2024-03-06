@@ -1,10 +1,10 @@
-import css from './FilterAlf.module.css';
-import { DropListAlf } from '../DropListAlf/DropListAlf';
+import css from './FilterPrice.module.css';
+import { DropListAlf } from '../DropListPrice/DropListPrice';
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectFilterAlf } from '../../redux/selectors';
+import { selectFilterPrice } from '../../redux/selectors';
 
-export const FilterAlf = () => {
+export const FilterPrice = () => {
     const allFiltAlfRef = useRef(null);
     const secAllDivRef = useRef(null);
     const allButtonFARef = useRef(null);
@@ -13,31 +13,31 @@ export const FilterAlf = () => {
 
     const [drListOn, setDrListOn] = useState(false);
 
-    const a = 'A to Z';
-    const z = 'Z to A';
+    const l = 'L to H';
+    const h = 'H to L';
 
-    const [filVal, setFilVal] = useState(a);
+    const [filVal, setFilVal] = useState(l);
 
-    const selAlf = useSelector(selectFilterAlf);
+    const selPr = useSelector(selectFilterPrice);
 
     useEffect(() => {
         if (allButtonFARef.current) {
-            switch (selAlf) {
+            switch (selPr) {
                 case "a":
-                    setFilVal(a);
+                    setFilVal(l);
                     allButtonFARef.current.classList.add(css.allButtonFAAct);
                     break;
                 case "z":
-                    setFilVal(z);
+                    setFilVal(h);
                     allButtonFARef.current.classList.add(css.allButtonFAAct);
                     break;
                 default:
-                    setFilVal(a);
+                    setFilVal(l);
                     allButtonFARef.current.classList.remove(css.allButtonFAAct);
 
     };
         }
-    }, [selAlf]);
+    }, [selPr]);
 
     useEffect(() => {
         if (allFiltAlfRef.current && secAllDivRef.current && allButtonFARef.current &&

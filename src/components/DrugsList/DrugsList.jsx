@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectDrugs, selectPharmacies, selectFavoriteDrugs, selectFilter, selectFilterPharm, selectFilterAlf } from "../../redux/selectors";
+import { selectDrugs, selectPharmacies, selectFavoriteDrugs, selectFilter, selectFilterPharm, selectFilterAlf, selectFilterPrice, selectFilterDate } from "../../redux/selectors";
 import css from "./DrugsList.module.css";
 import { Drug } from "../Drug/Drug";
 import { useEffect, useRef, useState } from "react";
@@ -9,6 +9,8 @@ export const DrugsList = ({realScreenHeight}) => {
     const fevDrugsId = useSelector(selectFavoriteDrugs);
     const filter = useSelector(selectFilter);
     const selAlf = useSelector(selectFilterAlf);
+    const selPr = useSelector(selectFilterPrice);
+    const selDate = useSelector(selectFilterDate);
     const allPharm = useSelector(selectPharmacies);
     const actId = useSelector(selectFilterPharm);
 
@@ -17,6 +19,7 @@ export const DrugsList = ({realScreenHeight}) => {
     const [notFvDrRend, setNotFvDrRend] = useState([]);
 
     const fevDrugsIdRef = useRef(fevDrugsId);
+    const pNoFoundRef = useRef(null);
 
     
 
@@ -51,7 +54,7 @@ export const DrugsList = ({realScreenHeight}) => {
         
         if (pasDrugs.length > 0) {
             switch (selAlf) {
-        case "a":
+            case "a":
                 pasDrugs.sort((a, b) => {
                 return a.name.localeCompare(b.name);
             });
@@ -60,6 +63,33 @@ export const DrugsList = ({realScreenHeight}) => {
                 pasDrugs.sort((a, b) => {
                 return b.name.localeCompare(a.name);
             });
+                break;
+                default:
+                    break
+            };
+            
+            switch (selPr) {
+            case "l":
+                pasDrugs.sort((a, b) => parseFloat(a.price.replace(',', '.')) - parseFloat(b.price.replace(',', '.')));
+                break;
+            case "h":
+                pasDrugs.sort((a, b) => parseFloat(b.price.replace(',', '.')) - parseFloat(a.price.replace(',', '.')));
+                break;
+                default:
+                    break
+            };
+
+            function parseDate(dateString) {
+    const parts = dateString.split('.');
+    return new Date(parts[2], parts[1] - 1, parts[0]); 
+            };
+            
+            switch (selDate) {
+        case "a":
+                pasDrugs.sort((a, b) => parseDate(a.dataWasAdded) - parseDate(b.dataWasAdded));
+                break;
+            case "z":
+                pasDrugs.sort((a, b) => parseDate(b.dataWasAdded) - parseDate(a.dataWasAdded));
                 break;
                 default:
                     break
@@ -73,7 +103,7 @@ export const DrugsList = ({realScreenHeight}) => {
             setDrugs(pasDrugs);
         };
         }
-    }, [filter, allDrugs, selAlf, actId, allPharm]);
+    }, [filter, allDrugs, selAlf, selPr, selDate, actId, allPharm]);
     
     useEffect(() => {
         if (fevDrugsIdRef.current.length > 0) {
@@ -86,16 +116,24 @@ export const DrugsList = ({realScreenHeight}) => {
     const drugsUlRef = useRef(null);
 
     useEffect(() => {
-        if (allDrugsListDivRef.current && drugsUlRef.current) {
             const realScreenWidth = window.innerWidth;
+        if (allDrugsListDivRef.current) {
             const allDrugsListDiv = allDrugsListDivRef.current;
-            const drugsUl = drugsUlRef.current;
             allDrugsListDiv.style.height = `${realScreenHeight - 200}px`;
             allDrugsListDiv.style.margin = `0 0 0 ${realScreenWidth / 72}px`;
-            drugsUl.style.width = `${allDrugsListDiv.clientWidth - (realScreenWidth / 48) * 2}px`;
-            drugsUl.style.padding = `${realScreenWidth / 72}px ${realScreenWidth / 48}px`;
-            drugsUl.style.gap = `${realScreenWidth / 72}px ${realScreenWidth / 29}px`;
+        
+            if (drugsUlRef.current) {
+                const drugsUl = drugsUlRef.current;
+                drugsUl.style.width = `${allDrugsListDiv.clientWidth - (realScreenWidth / 48) * 2}px`;
+                drugsUl.style.padding = `${realScreenWidth / 72}px ${realScreenWidth / 48}px`;
+                drugsUl.style.gap = `${realScreenWidth / 72}px ${realScreenWidth / 29}px`;
+            };
+        };
+        if (pNoFoundRef.current) {
+            const pNoFound = pNoFoundRef.current;
+            pNoFound.style.fontSize = realScreenWidth/42 + 'px';
         }
+
     })
 
     return (
@@ -116,7 +154,7 @@ export const DrugsList = ({realScreenHeight}) => {
                 </>
         )
         ) : (
-            <p>No drugs found</p>
+            <p ref={pNoFoundRef}>No drugs found</p>
         )}
     </div>
 )

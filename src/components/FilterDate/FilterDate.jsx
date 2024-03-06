@@ -1,10 +1,10 @@
-import css from './FilterAlf.module.css';
-import { DropListAlf } from '../DropListAlf/DropListAlf';
+import css from './FilterDate.module.css';
+import { DropListAlf } from '../DropListDate/DropListDate';
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectFilterAlf } from '../../redux/selectors';
 
-export const FilterAlf = () => {
+export const FilterDate = () => {
     const allFiltAlfRef = useRef(null);
     const secAllDivRef = useRef(null);
     const allButtonFARef = useRef(null);

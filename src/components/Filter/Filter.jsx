@@ -2,12 +2,14 @@ import css from './Filter.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectFilter } from '../../redux/selectors';
 import { setFilter } from '../../redux/filterSlice';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export const Filter = () => {
     const filterWithState = useSelector(selectFilter);
     const dispatch = useDispatch();
     const [placeholderValue, setPlaceholderValue] = useState('');
+
+    const inputFilterRef = useRef(null);
 
     const updateStateForFilter = (evt) => {
         evt.preventDefault();
@@ -24,11 +26,22 @@ export const Filter = () => {
             setPlaceholderValue('Please start typing name')
         } else {
             setPlaceholderValue('Type name')
-        }
+        };
+
+        if (inputFilterRef.current) {
+            const inputFilter = inputFilterRef.current;
+            inputFilter.style.borderRadius = realScreenWidth / 100 + 'px';
+            inputFilter.style.width = realScreenWidth/2 + 'px';
+            inputFilter.style.height = realScreenWidth/25 + 'px';
+            inputFilter.style.padding = `0 ${realScreenWidth/100}px`;
+            inputFilter.style.margin = `${realScreenWidth / 50}px 0`;
+            inputFilter.style.fontSize = `${realScreenWidth/71}px`;
+        };
     }, []);
 
         return(
-                <input 
+            <input 
+                ref={inputFilterRef}
                 value={filterWithState}
                 className={css.inputFilter} 
                 type="text" 
