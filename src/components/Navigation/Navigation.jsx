@@ -20,19 +20,22 @@ export const Navigation = () => {
     const buttonNavShopCartRef = useRef(null);
     const divPLenDrRef = useRef(null);
     const pLenDrRef = useRef(null);
+    const pNavigationRef = useRef(null);
 
     useEffect(() => {
         if (divNavShopCartRef.current && buttonNavShopCartRef.current &&
-            divNavigationRef.current) {
+            divNavigationRef.current && pNavigationRef.current) {
             const realScreenWidth = window.innerWidth;
             const divNavigation = divNavigationRef.current;
             const buttonNavShopCart = buttonNavShopCartRef.current;
             const divNavShopCart = divNavShopCartRef.current;
+            const pNavigation = pNavigationRef.current;
             divNavigation.style.padding = `${realScreenWidth/144}px 0`;
             buttonNavShopCart.style.height = realScreenWidth / 17 + 'px';
             buttonNavShopCart.style.width = realScreenWidth / 17 + 'px';
             divNavShopCart.style.height = realScreenWidth / 24 + 'px';
             divNavShopCart.style.width = realScreenWidth / 24 + 'px';
+            pNavigation.style.fontSize = realScreenWidth/45 + 'px';
             if (divPLenDrRef.current && pLenDrRef.current) {
                 const divPLenDr = divPLenDrRef.current;
                 const pLenDr = pLenDrRef.current;
@@ -47,7 +50,7 @@ export const Navigation = () => {
         <div ref={divNavigationRef} className={css.divNavigation}>
             <nav className={css.navNavigation}>
             <Link to={'/'} className={css.aNavigation}>
-                <p className={css.pNavigation}>Shop</p>
+                <p ref={pNavigationRef} className={css.pNavigation}>Shop</p>
                 </Link>
                 <button ref={buttonNavShopCartRef} className={css.buttonNavShopCart}>
                     <Link to={'/shopping-cart'} className={[css.aNavigation, css.aNavigationSecond].join(" ")}>
