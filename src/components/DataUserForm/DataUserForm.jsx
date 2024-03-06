@@ -104,10 +104,9 @@ export const DataUserForm = ({ realScreenHeight }) => {
             <label className={[css.labelDUForm, 'labelDUForm'].join(' ')}>
                     <span className={[css.pRegDUForm, 'pRegDUForm'].join(' ')}>Phone</span>
                 <input className={css.inputDUForm} 
-                    oninput="this.value = this.value.replace(/[^0-9()+\-]/g, '')"
-                    onInput={(e) => {
-                                    e.target.value = e.target.value.replace(/[^0-9()+\\-]/g, '');
-                                }}
+                onInput={(e) => {
+                    e.target.value = e.target.value.replace(/[^0-9()+\\-]/g, '');
+                }}
                 value={dataUser.phone}
                 onChange={e => forInpP(e)}
                 name='phone'

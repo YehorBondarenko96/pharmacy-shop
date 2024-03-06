@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { selectDrugsForShop } from "../../redux/selectors";
 import { SevDr } from "../SevDr/SevDr";
 
-export const SavedDrugs = ({realScreenHeight}) => {
+export const SavedDrugs = ({realScreenHeight, message}) => {
     const drugsSh = useSelector(selectDrugsForShop);
 
     const allDivSDRef = useRef(null);
@@ -35,7 +35,7 @@ export const SavedDrugs = ({realScreenHeight}) => {
                 {drugsSh.map(d => <SevDr key={d.id} drug={d}/>)}
             </ul>
             ) : (
-                    <p ref={nothPRef}>You haven't selected any products yet</p>
+                    <p ref={nothPRef}>{message}</p>
             )}
         </div>
     )

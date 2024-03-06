@@ -47,7 +47,7 @@ const drugsLSSlice = createSlice({
             };
             state.orderData.drugsForShop[index].quantity = action.payload.quantity;
         },
-        delAllDrSh: (state, action) => {
+        delAllDrSh: (state) => {
             state.orderData.drugsForShop = [];
         },
         setUserName: (state, action) => {
@@ -61,6 +61,17 @@ const drugsLSSlice = createSlice({
         },
         setUserAddress: (state, action) => {
             state.orderData.user.address = action.payload;
+        },
+        delUserData: (state) => {
+            state.orderData = {
+        user: {
+            name: "",
+            email: "",
+            phone: "",
+            address: ""
+        },
+        drugsForShop: []
+    };
         }
     }
 });
@@ -75,7 +86,8 @@ export const {
     setUserName,
     setUserEmail,
     setUserPhone,
-    setUserAddress
+    setUserAddress,
+    delUserData
 } = drugsLSSlice.actions;
 
 export const drugsLSReducer = drugsLSSlice.reducer;

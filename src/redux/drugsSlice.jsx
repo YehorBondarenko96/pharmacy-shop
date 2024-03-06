@@ -1,5 +1,5 @@
 import { createSlice} from "@reduxjs/toolkit";
-import { fetchPharmacies, fetchDrugs } from "./opertions";
+import { fetchPharmacies, fetchDrugs, orderDrugs } from "./opertions";
 
 const drugsInitialState = {
     items: [],
@@ -32,7 +32,13 @@ const drugsSlice = createSlice({
             state.error = null;
             state.pharmacies = action.payload;
         })
-        .addCase(fetchPharmacies.rejected, forRejected)
+            .addCase(fetchPharmacies.rejected, forRejected)
+        .addCase(orderDrugs.pending, forPending)
+        .addCase(orderDrugs.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.error = null;
+        })
+            .addCase(orderDrugs.rejected, forRejected)
     }
 });
 

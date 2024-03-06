@@ -20,3 +20,12 @@ export const fetchDrugs = createAsyncThunk('drugs/fetchAll', async(_, thunkAPI) 
         return thunkAPI.rejectWithValue(e.message);
     }
 });
+
+export const orderDrugs = createAsyncThunk('drugs/order', async(orderData, thunkAPI) => {
+    try{
+        const result = await axios.post('/order-data', orderData);
+        return result.data;
+    } catch (e){
+        return thunkAPI.rejectWithValue(e.message);
+    }
+});

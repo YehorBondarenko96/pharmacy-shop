@@ -1,16 +1,25 @@
 import css from "./ShoppingCart.module.css";
 import { DataUserForm } from "../DataUserForm/DataUserForm";
 import { SavedDrugs } from "../SavedDrugs/SavedDrugs";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectDrugsForShop } from "../../redux/selectors";
-import { delAllDrSh } from "../../redux/drugsLSSlice";
+import { selectDrugsForShop, selectDataUser } from "../../redux/selectors";
+import { delAllDrSh, delUserData } from "../../redux/drugsLSSlice";
+import { orderDrugs } from "../../redux/opertions";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const ShoppingCart = () => {
     const disp = useDispatch();
 
     const realScreenHeight = window.innerHeight;
+    const realScreenWidth = window.innerWidth;
+
     const drForSh = useSelector(selectDrugsForShop);
+    const dataUser = useSelector(selectDataUser);
+
+    const [message, setMessage] = useState("You haven't selected any products yet");
 
     let allPrice = 0;
     if (drForSh.length > 0) {
@@ -33,10 +42,36 @@ const ShoppingCart = () => {
         disp(delAllDrSh());
     };
 
+    const forSubmit = (e) => {
+        e.preventDefault();
+        let allUD = false;
+        for (const key in dataUser) {
+            if (dataUser[key].trim() === '') {
+                allUD = false
+                break
+            } else {
+                allUD = true
+            };
+        };
+        if (!allUD) {
+            toast.error(<p style={{ fontSize: `14px`}}>Please fill in all customer details</p>)
+        } else if (drForSh.length < 1) { 
+            toast.error(<p style={{ fontSize: `14px`}}>You haven't selected any products yet</p>)
+        } else {
+            const orderData = {
+            user: dataUser,
+            order: drForSh
+        };
+            disp(orderDrugs(orderData));
+            setMessage(`${dataUser.name}, thank you for your order. Expect a call from our manager.`)
+            disp(delUserData());
+            disp(delAllDrSh());
+        }
+    };
+
     useEffect(() => {
         if (divDataUsSavDrRef.current&& divTotButShCRef.current && buttonShCFormRef.current &&
             divSvgBShCRef.current && totShCRef.current && buttonShDelRef.current && divSvgBDelRef.current) {
-            const realScreenWidth = window.innerWidth;
             const divDataUsSavDr = divDataUsSavDrRef.current;
             const divTotButShC = divTotButShCRef.current;
             const buttonShDel = buttonShDelRef.current;
@@ -66,10 +101,13 @@ const ShoppingCart = () => {
 
     return (
         <>
-            <form className={css.formShC}>
+            <form className={css.formShC} onSubmit={forSubmit}>
                 <div ref={divDataUsSavDrRef} className={css.divDataUsSavDr}>
                     <DataUserForm realScreenHeight={realScreenHeight}/>
-                    <SavedDrugs realScreenHeight={realScreenHeight}/>
+                    <SavedDrugs
+                        realScreenHeight={realScreenHeight}
+                        message={message}
+                    />
                 </div>
                 <div ref={divTotButShCRef} className={css.divTotButShC}>
                     <p ref={totShCRef} className={css.totShC}><b>Total price: {allPrice} &#8372;</b></p>
@@ -86,6 +124,7 @@ const ShoppingCart = () => {
                     <div ref={divSvgBShCRef} className={css.divSvgBShC}></div>
                 </button>
                 </div>
+            <ToastContainer />
             </form>
         </>
     )
