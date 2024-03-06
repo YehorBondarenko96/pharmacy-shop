@@ -1,4 +1,5 @@
-import { createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+import { orderDrugs } from "./opertions";
 
 const drugsLSInitialState = {
     favoriteDrugs: [],
@@ -71,8 +72,23 @@ const drugsLSSlice = createSlice({
             address: ""
         },
         drugsForShop: []
-    };
+            };
+            state.orderData.drugsForShop = [];
         }
+    },
+    extraReducers: builder => {
+        builder
+        .addCase(orderDrugs.fulfilled, (state, action) => {
+            state.orderData = {
+        user: {
+            name: "",
+            email: "",
+            phone: "",
+            address: ""
+        },
+        drugsForShop: []
+    };
+        })
     }
 });
 

@@ -19,6 +19,6 @@ export const selectFilterPrice = state => state.filter.price;
 export const selectFilterDate = state => state.filter.date;
 
 
-export const selectIsLoading = state => state.contacts.isLoading;
+export const selectIsLoading = state => state.drugs.isLoading;
 
-export const selectError = state => state.contacts.error;
+export const selectError = state => state.drugs.error;

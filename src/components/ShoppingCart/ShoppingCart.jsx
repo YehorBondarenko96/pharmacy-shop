@@ -1,10 +1,10 @@
 import css from "./ShoppingCart.module.css";
 import { DataUserForm } from "../DataUserForm/DataUserForm";
 import { SavedDrugs } from "../SavedDrugs/SavedDrugs";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectDrugsForShop, selectDataUser } from "../../redux/selectors";
-import { delAllDrSh, delUserData } from "../../redux/drugsLSSlice";
+import { selectDrugsForShop, selectDataUser, selectError } from "../../redux/selectors";
+import { delAllDrSh } from "../../redux/drugsLSSlice";
 import { orderDrugs } from "../../redux/opertions";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -18,8 +18,10 @@ const ShoppingCart = () => {
 
     const drForSh = useSelector(selectDrugsForShop);
     const dataUser = useSelector(selectDataUser);
+    const error = useSelector(selectError);
 
-    const [message, setMessage] = useState("You haven't selected any products yet");
+    const message = useRef("You haven't selected any products yet");
+    
 
     let allPrice = 0;
     if (drForSh.length > 0) {
@@ -57,17 +59,25 @@ const ShoppingCart = () => {
             toast.error(<p style={{ fontSize: `14px`}}>Please fill in all customer details</p>)
         } else if (drForSh.length < 1) { 
             toast.error(<p style={{ fontSize: `14px`}}>You haven't selected any products yet</p>)
+        } else if (error) {
+            toast.error(<p style={{ fontSize: `14px`}}>Oops... Something went wrong. Please try again later</p>)
+        
         } else {
             const orderData = {
             user: dataUser,
             order: drForSh
         };
             disp(orderDrugs(orderData));
-            setMessage(`${dataUser.name}, thank you for your order. Expect a call from our manager.`)
-            disp(delUserData());
-            disp(delAllDrSh());
+            message.current = `${dataUser.name}, thank you for your order. Expect a call from our manager.`;
         }
     };
+
+    useEffect(() => {
+        if (error) {
+            toast.error(<p style={{ fontSize: `14px` }}>Oops... Something went wrong. Please try again later</p>);
+            message.current = "You haven't selected any products yet";
+    }
+    });
 
     useEffect(() => {
         if (divDataUsSavDrRef.current&& divTotButShCRef.current && buttonShCFormRef.current &&
@@ -106,7 +116,7 @@ const ShoppingCart = () => {
                     <DataUserForm realScreenHeight={realScreenHeight}/>
                     <SavedDrugs
                         realScreenHeight={realScreenHeight}
-                        message={message}
+                        message={message.current}
                     />
                 </div>
                 <div ref={divTotButShCRef} className={css.divTotButShC}>
