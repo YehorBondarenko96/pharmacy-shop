@@ -1,11 +1,39 @@
 import css from "./DataUserForm.module.css";
 import { useEffect, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setUserName,
+    setUserEmail,
+    setUserPhone,
+    setUserAddress } from "../../redux/drugsLSSlice";
+import { selectDataUser } from "../../redux/selectors";
 
 export const DataUserForm = ({ realScreenHeight }) => {
+    const disp = useDispatch();
+    const dataUser = useSelector(selectDataUser);
+
     const realScreenWidth = window.innerWidth;
 
-
     const allDivDUFRef = useRef(null);
+
+    const forInpN = (e) => {
+        const inpV = e.target.value;
+        disp(setUserName(inpV));
+    };
+
+    const forInpE = (e) => {
+        const inpV = e.target.value;
+        disp(setUserEmail(inpV));
+    };
+
+    const forInpP = (e) => {
+        const inpV = e.target.value;
+        disp(setUserPhone(inpV));
+    };
+
+    const forInpA = (e) => {
+        const inpV = e.target.value;
+        disp(setUserAddress(inpV));
+    };
 
     useEffect(() => {
         if (allDivDUFRef.current) {
@@ -55,6 +83,8 @@ export const DataUserForm = ({ realScreenHeight }) => {
             <label className={[css.labelDUForm, 'labelDUForm'].join(' ')}>
                     <span className={[css.pRegDUForm, 'pRegDUForm'].join(' ')}>Name</span>
                 <input className={css.inputDUForm} 
+                value={dataUser.name}
+                onChange={e => forInpN(e)}
                 name='name'
                 type="text"
                 autoComplete="on"
@@ -64,6 +94,8 @@ export const DataUserForm = ({ realScreenHeight }) => {
             <label className={[css.labelDUForm, 'labelDUForm'].join(' ')}>
                     <span className={[css.pRegDUForm, 'pRegDUForm'].join(' ')}>Email</span>
                 <input className={css.inputDUForm} 
+                value={dataUser.email}
+                onChange={e => forInpE(e)}
                 name='email'
                 type="email"
                 autoComplete="on"
@@ -72,6 +104,12 @@ export const DataUserForm = ({ realScreenHeight }) => {
             <label className={[css.labelDUForm, 'labelDUForm'].join(' ')}>
                     <span className={[css.pRegDUForm, 'pRegDUForm'].join(' ')}>Phone</span>
                 <input className={css.inputDUForm} 
+                    oninput="this.value = this.value.replace(/[^0-9()+\-]/g, '')"
+                    onInput={(e) => {
+                                    e.target.value = e.target.value.replace(/[^0-9()+\\-]/g, '');
+                                }}
+                value={dataUser.phone}
+                onChange={e => forInpP(e)}
                 name='phone'
                 type="text"
                 autoComplete="on"
@@ -80,6 +118,8 @@ export const DataUserForm = ({ realScreenHeight }) => {
             <label className={[css.labelDUForm, 'labelDUForm'].join(' ')}>
                     <span className={[css.pRegDUForm, 'pRegDUForm'].join(' ')}>Address</span>
                 <input className={css.inputDUForm} 
+                value={dataUser.address}
+                onChange={e => forInpA(e)}
                 name='address'
                 type="text"
                 autoComplete="on"

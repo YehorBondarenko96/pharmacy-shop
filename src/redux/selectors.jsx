@@ -4,7 +4,9 @@ export const selectPharmacies = state => state.drugs.pharmacies;
 
 export const selectFavoriteDrugs = state => state.drugsLS.favoriteDrugs;
 
-export const selectDrugsForShop = state => state.drugsLS.drugsForShop;
+export const selectDrugsForShop = state => state.drugsLS.orderData.drugsForShop;
+
+export const selectDataUser = state => state.drugsLS.orderData.user;
 
 export const selectFilter = state => state.filter.input;
 

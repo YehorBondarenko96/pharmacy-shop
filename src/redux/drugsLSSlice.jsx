@@ -2,7 +2,15 @@ import { createSlice} from "@reduxjs/toolkit";
 
 const drugsLSInitialState = {
     favoriteDrugs: [],
-    drugsForShop: []
+    orderData: {
+        user: {
+            name: "",
+            email: "",
+            phone: "",
+            address: ""
+        },
+        drugsForShop: []
+    }
 };
     
 const drugsLSSlice = createSlice({
@@ -22,25 +30,37 @@ const drugsLSSlice = createSlice({
             state.favoriteDrugs.splice(index, 1);
         },
         addDrFShop: (state, action) => {
-                state.drugsForShop.push(action.payload)
+                state.orderData.drugsForShop.push(action.payload)
 
         },
         delDrFShop: (state, action) => {
-            const index = state.drugsForShop.findIndex(d => d.id === action.payload.id);
+            const index = state.orderData.drugsForShop.findIndex(d => d.id === action.payload.id);
             if(index === -1){
                 return null
             };
-            state.drugsForShop.splice(index, 1);
+            state.orderData.drugsForShop.splice(index, 1);
         },
         setQuantityShop: (state, action) => {
-            const index = state.drugsForShop.findIndex(d => d.id === action.payload.id);
+            const index = state.orderData.drugsForShop.findIndex(d => d.id === action.payload.id);
             if(index === -1){
                 return null
             };
-            state.drugsForShop[index].quantity = action.payload.quantity;
+            state.orderData.drugsForShop[index].quantity = action.payload.quantity;
         },
         delAllDrSh: (state, action) => {
-            state.drugsForShop = [];
+            state.orderData.drugsForShop = [];
+        },
+        setUserName: (state, action) => {
+            state.orderData.user.name = action.payload;
+        },
+        setUserEmail: (state, action) => {
+            state.orderData.user.email = action.payload;
+        },
+        setUserPhone: (state, action) => {
+            state.orderData.user.phone = action.payload;
+        },
+        setUserAddress: (state, action) => {
+            state.orderData.user.address = action.payload;
         }
     }
 });
@@ -51,7 +71,11 @@ export const {
     addDrFShop,
     delDrFShop,
     setQuantityShop,
-    delAllDrSh
+    delAllDrSh,
+    setUserName,
+    setUserEmail,
+    setUserPhone,
+    setUserAddress
 } = drugsLSSlice.actions;
 
 export const drugsLSReducer = drugsLSSlice.reducer;
