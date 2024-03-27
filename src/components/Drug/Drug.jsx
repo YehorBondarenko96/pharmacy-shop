@@ -100,6 +100,7 @@ export const Drug = ({ drug }) => {
             }
         }
     });
+    
     return (
         <li ref={drugLiRef} className={css.drugLi}>
         <div ref={drugDivRef} className={css.drugDiv}>
