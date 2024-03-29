@@ -99,7 +99,7 @@ export const Drug = ({ drug }) => {
                 
             }
         }
-    });
+    }, [realScreenWidth, inTrol, isFav]);
     
     return (
         <li ref={drugLiRef} className={css.drugLi}>
