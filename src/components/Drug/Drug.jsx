@@ -64,7 +64,7 @@ export const Drug = ({ drug }) => {
             const infoDrug = infoDrugRef.current;
             const drugImg = drugImgRef.current;
             
-            const widthSize = (((realScreenWidth - realScreenWidth / 6.6 - 40) - (realScreenWidth / 50) * 2) - (realScreenWidth / 55) * 2)/2;
+            const widthSize = (((realScreenWidth - realScreenWidth / 6.6 - 40 - realScreenWidth / 72) - (realScreenWidth / 50) * 2) - (realScreenWidth / 55) * 2)/2;
             drugLi.style.width = `${widthSize}px`;
             drugLi.style.height = `${widthSize * 1.176}px`;
             

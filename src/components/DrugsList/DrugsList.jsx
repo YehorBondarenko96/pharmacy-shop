@@ -111,13 +111,10 @@ export const DrugsList = () => {
 
     useEffect(() => {
         if (allDrugsListDivRef.current) {
-            // const allPharmaciesListDiv = document.querySelector('.allPharmaciesListDiv');
             const allDrugsListDiv = allDrugsListDivRef.current;
             allDrugsListDiv.style.height = `${realScreenHeight - realScreenHeight / 3}px`;
-            // if (allPharmaciesListDiv) {
-            const allDrugsListDivWidth = realScreenWidth - realScreenWidth / 6.6 - 40;
-                allDrugsListDiv.style.width = `${allDrugsListDivWidth}px`;
-            // }
+            const allDrugsListDivWidth = realScreenWidth - realScreenWidth / 6.6 - 40 - realScreenWidth / 72;
+            allDrugsListDiv.style.width = `${allDrugsListDivWidth}px`;
             allDrugsListDiv.style.margin = `0 0 0 ${realScreenWidth / 72}px`;
         
             if (drugsUlRef.current) {

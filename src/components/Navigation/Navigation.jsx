@@ -31,7 +31,8 @@ export const Navigation = () => {
             const buttonNavShopCart = buttonNavShopCartRef.current;
             const divNavShopCart = divNavShopCartRef.current;
             const pNavigation = pNavigationRef.current;
-            divNavigation.style.padding = `${realScreenWidth/144}px 0`;
+            divNavigation.style.paddingTop = `${realScreenWidth / 144}px`;
+            divNavigation.style.paddingBottom = `${realScreenWidth/144}px`;
             buttonNavShopCart.style.height = realScreenWidth / 17 + 'px';
             buttonNavShopCart.style.width = realScreenWidth / 17 + 'px';
             divNavShopCart.style.height = realScreenWidth / 24 + 'px';

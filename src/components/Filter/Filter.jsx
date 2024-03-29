@@ -33,7 +33,7 @@ export const Filter = () => {
             inputFilter.style.width = realScreenWidth/2 + 'px';
             inputFilter.style.height = realScreenWidth/25 + 'px';
             inputFilter.style.padding = `0 ${realScreenWidth/100}px`;
-            inputFilter.style.margin = `${realScreenWidth / 50}px 0`;
+            inputFilter.style.margin = `0 0 ${realScreenWidth / 50}px 0`;
             inputFilter.style.fontSize = `${realScreenWidth/71}px`;
         };
     }, [realScreenWidth]);
