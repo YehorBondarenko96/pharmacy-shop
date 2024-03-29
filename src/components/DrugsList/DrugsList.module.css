@@ -1,6 +1,4 @@
 .allDrugsListDiv {
-    height: 100%;
-    width: 100%;
     border: 1px grey solid;
     border-radius: 10px;
     display: flex;

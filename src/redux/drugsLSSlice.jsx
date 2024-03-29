@@ -11,6 +11,10 @@ const drugsLSInitialState = {
             address: ""
         },
         drugsForShop: []
+    },
+    screenOrientation: {
+        screenWidth: 0,
+        screenHeight: 0
     }
 };
     
@@ -74,6 +78,10 @@ const drugsLSSlice = createSlice({
         drugsForShop: []
             };
             state.orderData.drugsForShop = [];
+        },
+        setScreenOrientation: (state, action) => {
+            state.screenOrientation.screenWidth = action.payload.screenWidth;
+            state.screenOrientation.screenHeight = action.payload.screenHeight;
         }
     },
     extraReducers: builder => {
@@ -103,7 +111,8 @@ export const {
     setUserEmail,
     setUserPhone,
     setUserAddress,
-    delUserData
+    delUserData,
+    setScreenOrientation
 } = drugsLSSlice.actions;
 
 export const drugsLSReducer = drugsLSSlice.reducer;

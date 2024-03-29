@@ -18,6 +18,7 @@ import storage from "redux-persist/lib/storage";
 const drugsLSConfig = {
     key: 'drugsLS',
     storage,
+    blacklist: 'screenOrientation'
 };
 
 export const store = configureStore({

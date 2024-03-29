@@ -5,13 +5,13 @@ import { setUserName,
     setUserEmail,
     setUserPhone,
     setUserAddress } from "../../redux/drugsLSSlice";
-import { selectDataUser } from "../../redux/selectors";
+import { selectDataUser, selectScreenHeight, selectScreenWidth } from "../../redux/selectors";
 
-export const DataUserForm = ({ realScreenHeight }) => {
+export const DataUserForm = () => {
     const disp = useDispatch();
     const dataUser = useSelector(selectDataUser);
-
-    const realScreenWidth = window.innerWidth;
+    const realScreenHeight = useSelector(selectScreenHeight);
+    const realScreenWidth = useSelector(selectScreenWidth);
 
     const allDivDUFRef = useRef(null);
 

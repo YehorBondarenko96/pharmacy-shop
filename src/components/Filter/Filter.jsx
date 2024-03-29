@@ -1,11 +1,12 @@
 import css from './Filter.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectFilter } from '../../redux/selectors';
+import { selectFilter, selectScreenWidth } from '../../redux/selectors';
 import { setFilter } from '../../redux/filterSlice';
 import { useState, useEffect, useRef } from 'react';
 
 export const Filter = () => {
     const filterWithState = useSelector(selectFilter);
+    const realScreenWidth = useSelector(selectScreenWidth);
     const dispatch = useDispatch();
     const [placeholderValue, setPlaceholderValue] = useState('');
 
@@ -18,8 +19,6 @@ export const Filter = () => {
     };
 
     useEffect(() => {
-        const realScreenWidth = window.innerWidth;
-
         if(realScreenWidth > 465){
             setPlaceholderValue('Please start typing the desired name')
         } else if(realScreenWidth <= 465 && realScreenWidth > 370){
@@ -37,7 +36,7 @@ export const Filter = () => {
             inputFilter.style.margin = `${realScreenWidth / 50}px 0`;
             inputFilter.style.fontSize = `${realScreenWidth/71}px`;
         };
-    }, []);
+    }, [realScreenWidth]);
 
         return(
             <input 

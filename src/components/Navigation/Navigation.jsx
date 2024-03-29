@@ -2,10 +2,12 @@ import { Link } from "react-router-dom";
 import css from './Navigation.module.css';
 import { useRef, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { selectDrugsForShop } from "../../redux/selectors";
+import { selectDrugsForShop, selectScreenWidth } from "../../redux/selectors";
 
 export const Navigation = () => {
     const drugsForShop = useSelector(selectDrugsForShop);
+    const realScreenWidth = useSelector(selectScreenWidth);
+
 
     let allQuan = 0;
     if (drugsForShop.length > 0) {
@@ -25,7 +27,6 @@ export const Navigation = () => {
     useEffect(() => {
         if (divNavShopCartRef.current && buttonNavShopCartRef.current &&
             divNavigationRef.current && pNavigationRef.current) {
-            const realScreenWidth = window.innerWidth;
             const divNavigation = divNavigationRef.current;
             const buttonNavShopCart = buttonNavShopCartRef.current;
             const divNavShopCart = divNavShopCartRef.current;

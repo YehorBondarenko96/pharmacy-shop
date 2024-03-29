@@ -2,7 +2,7 @@ import css from './FilterPrice.module.css';
 import { DropListPrice } from '../DropListPrice/DropListPrice';
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectFilterPrice } from '../../redux/selectors';
+import { selectFilterPrice, selectScreenWidth } from '../../redux/selectors';
 
 export const FilterPrice = () => {
     const allFiltAlfRef = useRef(null);
@@ -19,6 +19,8 @@ export const FilterPrice = () => {
     const [filVal, setFilVal] = useState(l);
 
     const selPr = useSelector(selectFilterPrice);
+    const realScreenWidth = useSelector(selectScreenWidth);
+
 
     useEffect(() => {
         if (allButtonFARef.current) {
@@ -42,7 +44,6 @@ export const FilterPrice = () => {
     useEffect(() => {
         if (allFiltAlfRef.current && secAllDivRef.current && allButtonFARef.current &&
             divArrowRef.current && divDrLRef.current) {
-            const realScreenWidth = window.innerWidth;
             const allFiltAlf = allFiltAlfRef.current;
             const secAllDiv = secAllDivRef.current;
             const allButtonFA = allButtonFARef.current;

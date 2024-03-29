@@ -12,14 +12,12 @@ const Shop = () => {
     dispatch(fetchDrugs());
     dispatch(fetchPharmacies());
 
-    const realScreenHeight = window.innerHeight;
-
     return (
         <>
             <Filters/>
             <div className={css.allShopDiv}>
-                <PharmaciesList realScreenHeight={realScreenHeight}/>
-                <DrugsList realScreenHeight={realScreenHeight}/>
+                <PharmaciesList/>
+                <DrugsList/>
             </div>
         </>
     )

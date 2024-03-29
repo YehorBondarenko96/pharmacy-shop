@@ -1,11 +1,13 @@
 import { useEffect, useRef } from "react";
 import css from "./SavedDrugs.module.css";
 import { useSelector } from "react-redux";
-import { selectDrugsForShop } from "../../redux/selectors";
+import { selectDrugsForShop, selectScreenHeight, selectScreenWidth } from "../../redux/selectors";
 import { SevDr } from "../SevDr/SevDr";
 
-export const SavedDrugs = ({realScreenHeight, message}) => {
+export const SavedDrugs = ({message}) => {
     const drugsSh = useSelector(selectDrugsForShop);
+    const realScreenWidth = useSelector(selectScreenWidth);
+    const realScreenHeight = useSelector(selectScreenHeight);
 
     const allDivSDRef = useRef(null);
     const ulSDRef = useRef(null);
@@ -13,7 +15,6 @@ export const SavedDrugs = ({realScreenHeight, message}) => {
 
     useEffect(() => {
         if (allDivSDRef.current) {
-            const realScreenWidth = window.innerWidth;
             const allDivSD = allDivSDRef.current;
             allDivSD.style.height = realScreenHeight - realScreenHeight/2.5 + 'px';
             allDivSD.style.width = (realScreenWidth - 40 - realScreenWidth / 50) / 2 - (realScreenWidth/50)*2 + 'px';

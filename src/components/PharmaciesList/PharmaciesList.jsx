@@ -1,14 +1,16 @@
 import { useSelector, useDispatch } from "react-redux";
-import { selectPharmacies, selectFilterPharm } from "../../redux/selectors";
+import { selectPharmacies, selectFilterPharm, selectScreenWidth, selectScreenHeight } from "../../redux/selectors";
 import css from "./PharmaciesList.module.css";
 import { Pharmacy } from "../Pharmacy/Pharmacy";
 import { useRef, useEffect } from "react";
 import { setPhafm } from "../../redux/filterSlice";
 
-export const PharmaciesList = ({realScreenHeight}) => {
+export const PharmaciesList = () => {
     const pharmacies = useSelector(selectPharmacies); 
     const disp = useDispatch();
     const actId = useSelector(selectFilterPharm);
+    const realScreenWidth = useSelector(selectScreenWidth);
+    const realScreenHeight = useSelector(selectScreenHeight);
 
     const allPharmaciesListDivRef = useRef(null);
     const pharmaciesHlllRef = useRef(null);
@@ -23,7 +25,6 @@ export const PharmaciesList = ({realScreenHeight}) => {
         const allIdsPh = pharmacies.map(p => p.id);
         if (allPharmaciesListDivRef.current && pharmaciesHlllRef.current &&
             pharmaciesUlRef.current && phormasyButtonRef.current) {
-            const realScreenWidth = window.innerWidth;
             const allPharmaciesListDiv = allPharmaciesListDivRef.current;
             const pharmaciesHlll = pharmaciesHlllRef.current; 
             const pharmaciesUl = pharmaciesUlRef.current;
@@ -47,7 +48,7 @@ export const PharmaciesList = ({realScreenHeight}) => {
     });
 
     return (
-    <div ref={allPharmaciesListDivRef} className={css.allPharmaciesListDiv}>
+    <div ref={allPharmaciesListDivRef} className={[css.allPharmaciesListDiv, "allPharmaciesListDiv"].join(' ')}>
         {pharmacies.length > 0 ? (
                 <>
                     <h3 ref={pharmaciesHlllRef} className={css.pharmaciesHlll}>Pharmacies</h3>

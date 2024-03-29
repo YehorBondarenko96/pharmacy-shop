@@ -2,12 +2,14 @@ import css from "./SevDr.module.css";
 import { useEffect, useRef } from "react";
 import { addFavoriteDrugs, delFavoriteDrugs, delDrFShop, setQuantityShop } from "../../redux/drugsLSSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { selectFavoriteDrugs } from "../../redux/selectors";
+import { selectFavoriteDrugs, selectScreenWidth } from "../../redux/selectors";
 
 
 export const SevDr = ({ drug }) => {
     const dispatch = useDispatch();
     const favDr = useSelector(selectFavoriteDrugs);
+    const realScreenWidth = useSelector(selectScreenWidth);
+
     
     const isFav = favDr.includes(drug.id);
 
@@ -90,7 +92,6 @@ export const SevDr = ({ drug }) => {
             favoriteRef.current && infoDrugRef.current && drugImgRef.current &&
             inpButSevDrRef.current && addToBackedButRef.current && divDelToBackedButRef.current &&
             inputSavDrRef.current && plusButRef.current && minButRef.current) {
-            const realScreenWidth = window.innerWidth;
             const drugLi = liSevDrRef.current;
             const drugDiv = drugDivRef.current;
             const favorite = favoriteRef.current;

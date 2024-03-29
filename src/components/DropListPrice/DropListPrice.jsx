@@ -1,10 +1,14 @@
 import css from "./DropListPrice.module.css";
 import { setPrice, setAlf, setDate } from "../../redux/filterSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRef, useEffect } from "react";
+import { selectScreenWidth } from "../../redux/selectors";
 
 export const DropListPrice = () => {
     const disp = useDispatch();
+    
+    const realScreenWidth = useSelector(selectScreenWidth);
+
     const l = "l";
     const n = "n";
     const h = "h";
@@ -21,7 +25,6 @@ export const DropListPrice = () => {
 
     useEffect(() => {
         if (ulDrLRef.current && firstChildRef.current && lastChildRef.current) {
-            const realScreenWidth = window.innerWidth;
             const ulDrL = ulDrLRef.current;
             const firstChild = firstChildRef.current;
             const lastChild = lastChildRef.current;

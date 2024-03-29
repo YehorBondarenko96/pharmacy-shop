@@ -3,7 +3,7 @@ import { DataUserForm } from "../DataUserForm/DataUserForm";
 import { SavedDrugs } from "../SavedDrugs/SavedDrugs";
 import { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectDrugsForShop, selectDataUser, selectError } from "../../redux/selectors";
+import { selectDrugsForShop, selectDataUser, selectError, selectScreenWidth } from "../../redux/selectors";
 import { delAllDrSh } from "../../redux/drugsLSSlice";
 import { orderDrugs } from "../../redux/opertions";
 import { ToastContainer, toast } from 'react-toastify';
@@ -13,9 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const ShoppingCart = () => {
     const disp = useDispatch();
 
-    const realScreenHeight = window.innerHeight;
-    const realScreenWidth = window.innerWidth;
-
+    const realScreenWidth = useSelector(selectScreenWidth);
     const drForSh = useSelector(selectDrugsForShop);
     const dataUser = useSelector(selectDataUser);
     const error = useSelector(selectError);
@@ -113,9 +111,8 @@ const ShoppingCart = () => {
         <>
             <form className={css.formShC} onSubmit={forSubmit}>
                 <div ref={divDataUsSavDrRef} className={css.divDataUsSavDr}>
-                    <DataUserForm realScreenHeight={realScreenHeight}/>
+                    <DataUserForm/>
                     <SavedDrugs
-                        realScreenHeight={realScreenHeight}
                         message={message.current}
                     />
                 </div>

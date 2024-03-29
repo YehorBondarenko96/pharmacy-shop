@@ -8,14 +8,16 @@ import {
     selectFilterAlf,
     selectFilterPrice,
     selectFilterDate,
-    selectIsLoading
+    selectIsLoading,
+    selectScreenHeight,
+    selectScreenWidth
 } from "../../redux/selectors";
 import css from "./DrugsList.module.css";
 import { Drug } from "../Drug/Drug";
 import { useEffect, useRef, useState } from "react";
 import { Loader } from "../Loader/Loader";
 
-export const DrugsList = ({realScreenHeight}) => {
+export const DrugsList = () => {
     const allDrugs = useSelector(selectDrugs); 
     const fevDrugsId = useSelector(selectFavoriteDrugs);
     const filter = useSelector(selectFilter);
@@ -25,6 +27,8 @@ export const DrugsList = ({realScreenHeight}) => {
     const allPharm = useSelector(selectPharmacies);
     const actId = useSelector(selectFilterPharm);
     const isLoading = useSelector(selectIsLoading);
+    const realScreenHeight = useSelector(selectScreenHeight);
+    const realScreenWidth = useSelector(selectScreenWidth);
 
     const [drugs, setDrugs] = useState(allDrugs);
     const [fevDrRend, setFevDrRend] = useState([]);
@@ -106,10 +110,13 @@ export const DrugsList = ({realScreenHeight}) => {
     const drugsUlRef = useRef(null);
 
     useEffect(() => {
-            const realScreenWidth = window.innerWidth;
         if (allDrugsListDivRef.current) {
+            const allPharmaciesListDiv = document.querySelector('.allPharmaciesListDiv');
             const allDrugsListDiv = allDrugsListDivRef.current;
-            allDrugsListDiv.style.height = `${realScreenHeight - realScreenHeight/3}px`;
+            allDrugsListDiv.style.height = `${realScreenHeight - realScreenHeight / 3}px`;
+            if (allPharmaciesListDiv) {
+                allDrugsListDiv.style.width = `${realScreenWidth - allPharmaciesListDiv.clientWidth - 40}px`;
+            }
             allDrugsListDiv.style.margin = `0 0 0 ${realScreenWidth / 72}px`;
         
             if (drugsUlRef.current) {

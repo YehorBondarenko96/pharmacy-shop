@@ -2,11 +2,13 @@ import css from "../PharmaciesList/PharmaciesList.module.css";
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPhafm } from "../../redux/filterSlice";
-import { selectFilterPharm } from "../../redux/selectors";
+import { selectFilterPharm, selectScreenWidth } from "../../redux/selectors";
 
 export const Pharmacy = ({ pharmacy }) => {
     const disp = useDispatch();
     const actId = useSelector(selectFilterPharm);
+    const realScreenWidth = useSelector(selectScreenWidth);
+
 
     const phormasyButtonRef = useRef(null);
 
@@ -16,7 +18,6 @@ export const Pharmacy = ({ pharmacy }) => {
 
     useEffect(() => {
         if (phormasyButtonRef.current) {
-            const realScreenWidth = window.innerWidth;
             const phormasyButton = phormasyButtonRef.current;
             phormasyButton.style.width = realScreenWidth / 9.6 + 'px';
             phormasyButton.style.height = realScreenWidth / 29 + 'px';

@@ -2,7 +2,7 @@ import css from './FilterDate.module.css';
 import { DropListDate } from '../DropListDate/DropListDate';
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectFilterDate } from '../../redux/selectors';
+import { selectFilterDate, selectScreenWidth } from '../../redux/selectors';
 
 export const FilterDate = () => {
     const allFiltAlfRef = useRef(null);
@@ -19,6 +19,9 @@ export const FilterDate = () => {
     const [filVal, setFilVal] = useState(w);
 
     const selDate = useSelector(selectFilterDate);
+    const realScreenWidth = useSelector(selectScreenWidth);
+
+
 
     useEffect(() => {
         if (allButtonFARef.current) {
@@ -42,7 +45,6 @@ export const FilterDate = () => {
     useEffect(() => {
         if (allFiltAlfRef.current && secAllDivRef.current && allButtonFARef.current &&
             divArrowRef.current && divDrLRef.current) {
-            const realScreenWidth = window.innerWidth;
             const allFiltAlf = allFiltAlfRef.current;
             const secAllDiv = secAllDivRef.current;
             const allButtonFA = allButtonFARef.current;

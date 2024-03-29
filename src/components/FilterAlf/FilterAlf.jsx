@@ -2,7 +2,7 @@ import css from './FilterAlf.module.css';
 import { DropListAlf } from '../DropListAlf/DropListAlf';
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectFilterAlf } from '../../redux/selectors';
+import { selectFilterAlf, selectScreenWidth } from '../../redux/selectors';
 
 export const FilterAlf = () => {
     const allFiltAlfRef = useRef(null);
@@ -11,6 +11,10 @@ export const FilterAlf = () => {
     const divDrLRef = useRef(null);
     const divArrowRef = useRef(null);
 
+    const realScreenWidth = useSelector(selectScreenWidth);
+    const selAlf = useSelector(selectFilterAlf);
+
+
     const [drListOn, setDrListOn] = useState(false);
 
     const a = 'A to Z';
@@ -18,7 +22,6 @@ export const FilterAlf = () => {
 
     const [filVal, setFilVal] = useState(a);
 
-    const selAlf = useSelector(selectFilterAlf);
 
     useEffect(() => {
         if (allButtonFARef.current) {
@@ -42,7 +45,6 @@ export const FilterAlf = () => {
     useEffect(() => {
         if (allFiltAlfRef.current && secAllDivRef.current && allButtonFARef.current &&
             divArrowRef.current && divDrLRef.current) {
-            const realScreenWidth = window.innerWidth;
             const allFiltAlf = allFiltAlfRef.current;
             const secAllDiv = secAllDivRef.current;
             const allButtonFA = allButtonFARef.current;
