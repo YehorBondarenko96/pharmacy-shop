@@ -64,9 +64,11 @@ export const Drug = ({ drug }) => {
             const infoDrug = infoDrugRef.current;
             const drugImg = drugImgRef.current;
             const drugsUl = document.querySelector('.drugsUl');
-            console.log(realScreenWidth);
             if (drugsUl) {
                 const widthSize = (drugsUl.clientWidth - (realScreenWidth / 45) * 2 - realScreenWidth/29)/2;
+                console.log('realScreenWidth: ', realScreenWidth);
+                console.log('drugsUl.clientWidth: ', drugsUl.clientWidth);
+                console.log('widthSize: ', widthSize);
                 drugLi.style.width = `${widthSize}px`;
                 drugLi.style.height = `${widthSize * 1.176}px`;
             };
