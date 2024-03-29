@@ -63,15 +63,14 @@ export const Drug = ({ drug }) => {
             const favorite = favoriteRef.current;
             const infoDrug = infoDrugRef.current;
             const drugImg = drugImgRef.current;
-            const drugsUl = document.querySelector('.drugsUl');
-            if (drugsUl) {
-                const widthSize = (drugsUl.clientWidth - (realScreenWidth / 45) * 2 - realScreenWidth/29)/2;
+            // const drugsUl = document.querySelector('.drugsUl');
+            // if (drugsUl) {
+                const widthSize = (((realScreenWidth - realScreenWidth / 6.6 - 40) - (realScreenWidth / 48) * 2) - (realScreenWidth / 45) * 2 - realScreenWidth/29)/2;
                 console.log('realScreenWidth: ', realScreenWidth);
-                console.log('drugsUl.clientWidth: ', drugsUl.clientWidth);
                 console.log('widthSize: ', widthSize);
                 drugLi.style.width = `${widthSize}px`;
                 drugLi.style.height = `${widthSize * 1.176}px`;
-            };
+            // };
             drugDiv.style.fontSize = realScreenWidth / 103 + 'px';
             drugLi.style.paddingBottom = realScreenWidth / 72 + 'px';
             addToBackedBut.style.height = realScreenWidth / 24 + 'px';

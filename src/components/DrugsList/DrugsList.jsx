@@ -111,19 +111,18 @@ export const DrugsList = () => {
 
     useEffect(() => {
         if (allDrugsListDivRef.current) {
-            const allPharmaciesListDiv = document.querySelector('.allPharmaciesListDiv');
+            // const allPharmaciesListDiv = document.querySelector('.allPharmaciesListDiv');
             const allDrugsListDiv = allDrugsListDivRef.current;
             allDrugsListDiv.style.height = `${realScreenHeight - realScreenHeight / 3}px`;
-            if (allPharmaciesListDiv) {
-                allDrugsListDiv.style.width = `${realScreenWidth - allPharmaciesListDiv.clientWidth - 40}px`;
-            }
+            // if (allPharmaciesListDiv) {
+            const allDrugsListDivWidth = realScreenWidth - realScreenWidth / 6.6 - 40;
+                allDrugsListDiv.style.width = `${allDrugsListDivWidth}px`;
+            // }
             allDrugsListDiv.style.margin = `0 0 0 ${realScreenWidth / 72}px`;
         
             if (drugsUlRef.current) {
                 const drugsUl = drugsUlRef.current;
-                const widthDrugsUl = allDrugsListDiv.clientWidth - (realScreenWidth / 48) * 2;
-                console.log('widthDrugsUl: ', widthDrugsUl);
-                drugsUl.style.width = `${widthDrugsUl}px`;
+                drugsUl.style.width = `${allDrugsListDivWidth - (realScreenWidth / 48) * 2}px`;
                 drugsUl.style.padding = `${realScreenWidth / 72}px ${realScreenWidth / 48}px`;
                 drugsUl.style.gap = `${realScreenWidth / 72}px ${realScreenWidth / 29}px`;
             };
@@ -141,7 +140,7 @@ export const DrugsList = () => {
                 drugs.length > 0 ? (fevDrRend.length > 0 ? (
                 <>
                 <ul ref={drugsUlRef} className={[css.drugsUl, 'drugsUl'].join(' ')}>
-                        {fevDrRend.map(dr => (<Drug key={dr.id + (Math.random() * 1000000000)} drug={dr} />))}
+                        {fevDrRend.map(dr => (<Drug key={dr.id + (Math.random() * 1000000000)} drug={dr}/>))}
                         {notFvDrRend.map(dr => (<Drug key={dr.id + (Math.random() * 1000000000)} drug={dr}/>))}
                         
                 </ul>
