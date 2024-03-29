@@ -80,7 +80,8 @@ export const DataUserForm = () => {
     });
     return (
         <div ref={allDivDUFRef} className={css.allDivDUF}>
-            <label className={[css.labelDUForm, 'labelDUForm'].join(' ')}>
+            <form className={css.formDUF}>
+                <label className={[css.labelDUForm, 'labelDUForm'].join(' ')}>
                     <span className={[css.pRegDUForm, 'pRegDUForm'].join(' ')}>Name</span>
                 <input className={css.inputDUForm} 
                 value={dataUser.name}
@@ -124,6 +125,7 @@ export const DataUserForm = () => {
                 autoComplete="on"
                 placeholder={realScreenWidth > 455 ? ("Please, enter your address"):("Address")} />
             </label>
+            </form>
         </div>
     )
 };
