@@ -121,7 +121,9 @@ export const DrugsList = () => {
         
             if (drugsUlRef.current) {
                 const drugsUl = drugsUlRef.current;
-                drugsUl.style.width = `${allDrugsListDiv.clientWidth - (realScreenWidth / 48) * 2}px`;
+                const widthDrugsUl = allDrugsListDiv.clientWidth - (realScreenWidth / 48) * 2;
+                console.log('widthDrugsUl: ', widthDrugsUl);
+                drugsUl.style.width = `${widthDrugsUl}px`;
                 drugsUl.style.padding = `${realScreenWidth / 72}px ${realScreenWidth / 48}px`;
                 drugsUl.style.gap = `${realScreenWidth / 72}px ${realScreenWidth / 29}px`;
             };
