@@ -51,18 +51,23 @@ export const FilterDate = () => {
             const divArrow = divArrowRef.current;
             const divDrL = divDrLRef.current;
 
-            allFiltAlf.style.height = realScreenWidth / 24 + 'px';
-            allFiltAlf.style.width = realScreenWidth / 10 + 'px';
-            secAllDiv.style.height = realScreenWidth / 5 + 'px';
-            secAllDiv.style.width = realScreenWidth / 9.1 + 'px';
-            allButtonFA.style.fontSize = realScreenWidth / 71 + 'px';
-            allButtonFA.style.width = realScreenWidth / 10 + 'px';
-            allButtonFA.style.height = realScreenWidth / 24 + 'px';
-            allButtonFA.style.gap = realScreenWidth / 66.67 + 'px';
+            let coef = 1;
+            if (realScreenWidth > 1000) { 
+                coef = 1.3;
+            };
+
+            allFiltAlf.style.height = realScreenWidth / (24 * coef) + 'px';
+            allFiltAlf.style.width = realScreenWidth / (10 * coef) + 'px';
+            secAllDiv.style.height = realScreenWidth / (5 * coef) + 'px';
+            secAllDiv.style.width = realScreenWidth / (9.1 * coef) + 'px';
+            allButtonFA.style.fontSize = realScreenWidth / (71 * coef) + 'px';
+            allButtonFA.style.width = realScreenWidth / (10 * coef) + 'px';
+            allButtonFA.style.height = realScreenWidth / (24 * coef) + 'px';
+            allButtonFA.style.gap = realScreenWidth / (66.67 * coef) + 'px';
             allButtonFA.style.paddingLeft = realScreenWidth / 200 + 'px';
             allButtonFA.style.borderRadius = realScreenWidth / 100 + 'px';
-            divArrow.style.height = realScreenWidth / 50 + 'px';
-            divArrow.style.width = realScreenWidth / 50 + 'px';
+            divArrow.style.height = realScreenWidth / (50 * coef) + 'px';
+            divArrow.style.width = realScreenWidth / (50 * coef) + 'px';
             divDrL.style.borderRadius = realScreenWidth / 100 + 'px';
         }
     });

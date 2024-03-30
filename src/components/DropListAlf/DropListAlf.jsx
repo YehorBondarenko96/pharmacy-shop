@@ -30,23 +30,28 @@ export const DropListAlf = () => {
             const buttonFAs = document.querySelectorAll('.buttonFA');
             const divArrows = document.querySelectorAll('.divArrow');
 
-            ulDrL.style.width = realScreenWidth / 10 + 'px';
+            let coef = 1;
+            if (realScreenWidth > 1000) { 
+                coef = 1.3;
+            };
+
+            ulDrL.style.width = realScreenWidth / (10 * coef) + 'px';
             ulDrL.style.borderRadius = realScreenWidth / 100 + 'px';
             firstChild.style.borderRadius = `${realScreenWidth / 111}px ${realScreenWidth / 111}px 0 0`;
             lastChild.style.borderRadius = `0 0 ${realScreenWidth / 111}px ${realScreenWidth / 111}px`;
             if (buttonFAs) {
                 buttonFAs.forEach(buttonFA => {
-                    buttonFA.style.width = realScreenWidth / 10 + 'px';
-                    buttonFA.style.fontSize = realScreenWidth / 71 + 'px';
-                    buttonFA.style.height = realScreenWidth / 24 + 'px';
-                    buttonFA.style.gap = realScreenWidth / 66.67 + 'px';
+                    buttonFA.style.width = realScreenWidth / (10 * coef) + 'px';
+                    buttonFA.style.fontSize = realScreenWidth / (71 * coef) + 'px';
+                    buttonFA.style.height = realScreenWidth / (24 * coef) + 'px';
+                    buttonFA.style.gap = realScreenWidth / (66.67 * coef) + 'px';
                     buttonFA.style.paddingLeft = realScreenWidth / 200 + 'px';
                 })
             }
             if (divArrows) {
                 divArrows.forEach(divArrow => {
-                    divArrow.style.width = realScreenWidth / 50 + 'px';
-                    divArrow.style.height = realScreenWidth / 50 + 'px';
+                    divArrow.style.width = realScreenWidth / (50 * coef) + 'px';
+                    divArrow.style.height = realScreenWidth / (50 * coef) + 'px';
                 })
             }
         }
