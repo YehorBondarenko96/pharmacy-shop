@@ -104,13 +104,12 @@ export const SevDr = ({ drug }) => {
             const inputSavDr = inputSavDrRef.current;
             const plusBut = plusButRef.current;
             const minBut = minButRef.current;
-            const drugsUl = document.querySelector('.allDivSD');
-            if (drugsUl) {
-                const widthSize = drugsUl.clientWidth;
+            
+                const widthSize = (realScreenWidth - 40 - realScreenWidth / 50) / 2 - (realScreenWidth/50)*2;
                 drugLi.style.height = `${widthSize/2}px`;
                 drugImg.style.width = widthSize / 2 + 'px';
                 drugImg.style.height = widthSize/4 + 'px';
-            };
+            
             drugDiv.style.fontSize = realScreenWidth / 103 + 'px';
             favorite.style.width = realScreenWidth / 48 + 'px';
             favorite.style.height = realScreenWidth / 48 + 'px';

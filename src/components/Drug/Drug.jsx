@@ -64,18 +64,26 @@ export const Drug = ({ drug }) => {
             const infoDrug = infoDrugRef.current;
             const drugImg = drugImgRef.current;
             
-            const widthSize = (((realScreenWidth - realScreenWidth / 6.6 - 40 - realScreenWidth / 72) - (realScreenWidth / 50) * 2) - (realScreenWidth / 55) * 2)/2;
+            let c = 2;
+            if (realScreenWidth > 1000) {
+                c = 2.989;
+            }
+            const widthSize = (((realScreenWidth - realScreenWidth / 6.6 - 40 - realScreenWidth / 72) - (realScreenWidth / 50) * c) - (realScreenWidth / 55) * c)/c;
             drugLi.style.width = `${widthSize}px`;
             drugLi.style.height = `${widthSize * 1.176}px`;
             
-            drugDiv.style.fontSize = realScreenWidth / 103 + 'px';
+            let secCoef = 1;
+            if (realScreenWidth > 1000) {
+                secCoef = 1.3;
+            };
+            drugDiv.style.fontSize = realScreenWidth / (103 * secCoef) + 'px';
             drugLi.style.paddingBottom = realScreenWidth / 72 + 'px';
-            addToBackedBut.style.height = realScreenWidth / 24 + 'px';
+            addToBackedBut.style.height = realScreenWidth / (24 * secCoef) + 'px';
             addToBackedBut.style.gap = realScreenWidth/288 + 'px';
             addToBackedBut.style.right = realScreenWidth/72 + 'px';
             addToBackedBut.style.bottom = realScreenWidth/72 + 'px';
             addToBackedBut.style.borderRadius = realScreenWidth/72 + 'px';
-            addToBackedBut.style.fontSize = realScreenWidth/80 + 'px';
+            addToBackedBut.style.fontSize = realScreenWidth/(80 * secCoef) + 'px';
             addToBackedBut.style.padding = `0 ${realScreenWidth/144}px 0 ${realScreenWidth/96}px`;
             divAddToBackedBut.style.width = realScreenWidth / 48 + 'px';
             favorite.style.width = realScreenWidth / 48 + 'px';
