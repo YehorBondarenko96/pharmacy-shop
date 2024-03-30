@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/pharmacy-shop/static/css/main.a8dfd630.css",
-    "main.js": "/pharmacy-shop/static/js/main.b8e9eac7.js",
+    "main.js": "/pharmacy-shop/static/js/main.72d4a266.js",
     "static/css/974.6dcdd347.chunk.css": "/pharmacy-shop/static/css/974.6dcdd347.chunk.css",
-    "static/js/974.98f090ae.chunk.js": "/pharmacy-shop/static/js/974.98f090ae.chunk.js",
+    "static/js/974.934446b0.chunk.js": "/pharmacy-shop/static/js/974.934446b0.chunk.js",
     "static/css/587.aca6293a.chunk.css": "/pharmacy-shop/static/css/587.aca6293a.chunk.css",
     "static/js/587.3f26d993.chunk.js": "/pharmacy-shop/static/js/587.3f26d993.chunk.js",
     "static/js/989.bc0cb17b.chunk.js": "/pharmacy-shop/static/js/989.bc0cb17b.chunk.js",
@@ -26,15 +26,15 @@
     "static/media/minus-svgrepo-com.svg": "/pharmacy-shop/static/media/minus-svgrepo-com.1c3ca1f56805053477a8.svg",
     "static/media/plus-svgrepo-com.svg": "/pharmacy-shop/static/media/plus-svgrepo-com.e82348e66715b051e66d.svg",
     "main.a8dfd630.css.map": "/pharmacy-shop/static/css/main.a8dfd630.css.map",
-    "main.b8e9eac7.js.map": "/pharmacy-shop/static/js/main.b8e9eac7.js.map",
+    "main.72d4a266.js.map": "/pharmacy-shop/static/js/main.72d4a266.js.map",
     "974.6dcdd347.chunk.css.map": "/pharmacy-shop/static/css/974.6dcdd347.chunk.css.map",
-    "974.98f090ae.chunk.js.map": "/pharmacy-shop/static/js/974.98f090ae.chunk.js.map",
+    "974.934446b0.chunk.js.map": "/pharmacy-shop/static/js/974.934446b0.chunk.js.map",
     "587.aca6293a.chunk.css.map": "/pharmacy-shop/static/css/587.aca6293a.chunk.css.map",
     "587.3f26d993.chunk.js.map": "/pharmacy-shop/static/js/587.3f26d993.chunk.js.map",
     "989.bc0cb17b.chunk.js.map": "/pharmacy-shop/static/js/989.bc0cb17b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a8dfd630.css",
-    "static/js/main.b8e9eac7.js"
+    "static/js/main.72d4a266.js"
   ]
 }
