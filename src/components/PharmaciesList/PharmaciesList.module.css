@@ -1,11 +1,11 @@
 .allPharmaciesListDiv{
-    height: 100%;
     padding: 0;
     border: 1px grey solid;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 
 .pharmaciesHlll{
@@ -45,4 +45,8 @@
 .phormasyButtonAct {
     background-color: blue;
     color: #fff;
+}
+
+.noPharmP{
+    text-align: center;
 }

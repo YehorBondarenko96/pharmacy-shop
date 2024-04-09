@@ -35,6 +35,9 @@ export const DrugsList = () => {
     const [notFvDrRend, setNotFvDrRend] = useState([]);
 
     const fevDrugsIdRef = useRef(fevDrugsId);
+    useEffect(() => {
+        fevDrugsIdRef.current = fevDrugsId;
+    }, [fevDrugsId]);
     const pNoFoundRef = useRef(null);
 
     useEffect(() => {

@@ -1,9 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
-import { selectPharmacies, selectFilterPharm, selectScreenWidth, selectScreenHeight } from "../../redux/selectors";
+import { selectPharmacies, selectFilterPharm, selectScreenWidth, selectScreenHeight, selectIsLoading } from "../../redux/selectors";
 import css from "./PharmaciesList.module.css";
 import { Pharmacy } from "../Pharmacy/Pharmacy";
 import { useRef, useEffect } from "react";
 import { setPhafm } from "../../redux/filterSlice";
+import { Loader } from "../Loader/Loader";
 
 export const PharmaciesList = () => {
     const pharmacies = useSelector(selectPharmacies); 
@@ -11,11 +12,13 @@ export const PharmaciesList = () => {
     const actId = useSelector(selectFilterPharm);
     const realScreenWidth = useSelector(selectScreenWidth);
     const realScreenHeight = useSelector(selectScreenHeight);
+    const isLoading = useSelector(selectIsLoading);
 
     const allPharmaciesListDivRef = useRef(null);
     const pharmaciesHlllRef = useRef(null);
     const pharmaciesUlRef = useRef(null);
     const phormasyButtonRef = useRef(null);
+    const noPharmPRef = useRef(null);
 
     const butCl = () => {
         disp(setPhafm(""));
@@ -23,14 +26,18 @@ export const PharmaciesList = () => {
 
     useEffect(() => {
         const allIdsPh = pharmacies.map(p => p.id);
-        if (allPharmaciesListDivRef.current && pharmaciesHlllRef.current &&
-            pharmaciesUlRef.current && phormasyButtonRef.current) {
+        if (allPharmaciesListDivRef.current) {
             const allPharmaciesListDiv = allPharmaciesListDivRef.current;
+            allPharmaciesListDiv.style.height = `${realScreenHeight - realScreenHeight / 3}px`;
+            allPharmaciesListDiv.style.width = `${realScreenWidth/6.8}px`;
+        };
+        if (pharmaciesHlllRef.current) {
             const pharmaciesHlll = pharmaciesHlllRef.current; 
-            const pharmaciesUl = pharmaciesUlRef.current;
-            allPharmaciesListDiv.style.height = `${realScreenHeight - realScreenHeight/3}px`;
             pharmaciesHlll.style.margin = `${realScreenWidth / 72}px 0 0 0`;
             pharmaciesHlll.style.fontSize = `${realScreenWidth / 80}px`;
+        };
+        if (pharmaciesUlRef.current && phormasyButtonRef.current) {
+            const pharmaciesUl = pharmaciesUlRef.current;
             pharmaciesUl.style.padding = `${realScreenWidth / 72}px ${realScreenWidth / 48}px`;
             pharmaciesUl.style.gap = `${realScreenWidth / 72}px`;
             const phormasyButton = phormasyButtonRef.current;
@@ -44,12 +51,23 @@ export const PharmaciesList = () => {
                 phormasyButton.classList.remove(css.phormasyButtonAct);
                 
             }
-        }
+        };
+        if (noPharmPRef.current) {
+            const noPharmP = noPharmPRef.current;
+            noPharmP.style.margin = `${realScreenWidth / 52}px 0 0 0`;
+            noPharmP.style.fontSize = `${realScreenWidth / 60}px`;
+        };
     });
 
     return (
     <div ref={allPharmaciesListDivRef} className={[css.allPharmaciesListDiv, "allPharmaciesListDiv"].join(' ')}>
-        {pharmacies.length > 0 ? (
+            {isLoading ? (
+                <>
+                    <h3 ref={pharmaciesHlllRef} className={css.pharmaciesHlll}>Pharmacies</h3>
+                        <Loader />
+                </>
+            ) :
+        pharmacies.length > 0 ? (
                 <>
                     <h3 ref={pharmaciesHlllRef} className={css.pharmaciesHlll}>Pharmacies</h3>
                     <ul ref={pharmaciesUlRef} className={css.pharmaciesUl}>
@@ -71,7 +89,7 @@ export const PharmaciesList = () => {
                 </ul>
                 </>
         ) : (
-            <p>No pharmacies found</p>
+            <p ref={noPharmPRef} className={css.noPharmP}>No pharmacies found</p>
         )}
     </div>
 )
