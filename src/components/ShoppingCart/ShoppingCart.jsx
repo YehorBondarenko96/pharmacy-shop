@@ -127,7 +127,7 @@ const ShoppingCart = () => {
                     <div ref={divSvgBDelRef} className={css.divSvgBDel}></div>
                 </button>
                 <button ref={buttonShCFormRef} className={css.buttonShCForm} type="submit">
-                    <p>To buy</p>
+                    <p>Buy</p>
                     <div ref={divSvgBShCRef} className={css.divSvgBShC}></div>
                 </button>
                 </div>
